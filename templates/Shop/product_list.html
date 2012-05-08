@@ -16,11 +16,11 @@
             <div class="limiter">
                 <label> Show</label>
                 <select onchange="setLocation(this.value)">
-                    <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/">
+                    <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                         9 </option>
-                    <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/">
+                    <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                         15 </option>
-                    <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/">
+                    <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                         30 </option>
                 </select>
                 per page
@@ -30,12 +30,12 @@
                 <ol>
                     {% if viewmodel.paginator.has_previous %}
                         <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.previous_page_number }}</a></li>
-                        <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
+                        <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
                     {% endif %}
                     <li class='current'>{{ viewmodel.pIndex }}</li>
                     {% if viewmodel.paginator.has_next  %}
                         <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.next_page_number }}</a></li>
-                        <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
+                        <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
                     {% endif %}
                 </ol>
             </div>
@@ -43,14 +43,36 @@
         <div class="sorter">
             <p class="view-mode">
                 <label> View as:</label>
-{#                @Html.Raw(Html.ItemsMode(Model).ToHtmlString())#}
+                {% if viewmodel.mode == 'grid' %}
+                    <strong title="Grid" class="grid">Grid</strong>
+                {% else %}
+                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/grid/" title="Grid" class="grid">Grid</a>
+                {% endif %}
+                {% if viewmodel.mode == 'list' %}
+                    <strong title="List" class="list">List</strong>
+                {% else %}
+                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/list/" title="List" class="list">List</a>
+                {% endif %}
             </p>
             <div class="sort-by">
                 <label>Sort By</label>
-{#                @Html.Raw(Html.ItemsOrderBySelectControl(Model).ToHtmlString())#}
+                <select onchange="setLocation(this.value)">
+                    <option {% if viewmodel.orderBy|lower == "name" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/name/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                        Name  </option>
+                    <option {% if viewmodel.orderBy|lower == "price" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/price/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                        Price </option>
+                    <option {% if viewmodel.orderBy|lower == "gender" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/gender/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                        Gender </option>
+                </select>
+                {% if viewmodel.sortOrder == "asc" %}
+                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/desc/{{ viewmodel.mode }}/" title="Set Descending Direction"><img src="{% static "img/i_asc_arrow.gif" %}" alt="Set Descending Direction" class="v-middle"></a>
+                {% else %}
+                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/asc/{{ viewmodel.mode }}/" title="Set Ascending Direction"><img src="{% static "img/i_desc_arrow.gif" %}" alt="Set Ascending Direction" class="v-middle"></a>
+                {% endif %}
             </div>
         </div>
     </div>
+
     <ul class="products-grid first odd">
         <li class="item first"><a class="product-image" title="Aqua Allegoria" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/aqua-allegoria.html">
             <img width="160" height="160" alt="Aqua Allegoria" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/a/q/aqua-allegoria.jpg"></a>
@@ -406,22 +428,23 @@
             </ul>
         </li>
     </ul>
-    <script type="text/javascript">            decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+
+    <script type="text/javascript">
+        decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
     <div class="toolbar-bottom">
         <div class="toolbar">
             <div class="pager">
                 <p class="amount">
-                    Items 1 to 15 of 20 total
+                    Items {{ viewmodel.curPage.start_index }} to {{ viewmodel.curPage.end_index }} of {{ viewmodel.paginator.count }} total
                 </p>
                 <div class="limiter">
-                    <label>
-                        Show</label>
+                    <label> Show</label>
                     <select onchange="setLocation(this.value)">
-                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?limit=9">
+                        <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                             9 </option>
-                        <option selected="selected" value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?limit=15">
+                        <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                             15 </option>
-                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?limit=30">
+                        <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                             30 </option>
                     </select>
                     per page
@@ -429,39 +452,47 @@
                 <div class="pages">
                     <strong>Page:</strong>
                     <ol>
-                        <li class="current">1</li>
-                        <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?p=2">
-                            2</a></li>
-                        <li><a title="Next" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?p=2"
-                               class="next i-next">
-                            <img class="v-middle" alt="Next" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/base/default/images/pager_arrow_right.gif">
-                        </a></li>
+                        {% if viewmodel.paginator.has_previous %}
+                            <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.previous_page_number }}</a></li>
+                            <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
+                        {% endif %}
+                        <li class='current'>{{ viewmodel.pIndex }}</li>
+                        {% if viewmodel.paginator.has_next  %}
+                            <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.next_page_number }}</a></li>
+                            <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
+                        {% endif %}
                     </ol>
                 </div>
             </div>
             <div class="sorter">
                 <p class="view-mode">
-                    <label>
-                        View as:</label>
-                    <strong class="grid" title="Grid">Grid</strong>&nbsp; <a class="list" title="List"
-                                                                             href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?mode=list">
-                    List</a>&nbsp;
+                    <label> View as:</label>
+                    {% if viewmodel.mode == 'grid' %}
+                        <strong title="Grid" class="grid">Grid</strong>
+                    {% else %}
+                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/grid/" title="Grid" class="grid">Grid</a>
+                    {% endif %}
+                    {% if viewmodel.mode == 'list' %}
+                        <strong title="List" class="list">List</strong>
+                    {% else %}
+                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/list/" title="List" class="list">List</a>
+                    {% endif %}
                 </p>
                 <div class="sort-by">
-                    <label>
-                        Sort By</label>
+                    <label>Sort By</label>
                     <select onchange="setLocation(this.value)">
-                        <option selected="selected" value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=position">
-                            Position </option>
-                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=name">
-                            Name </option>
-                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=price">
+                        <option {% if viewmodel.orderBy|lower == "name" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/name/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                            Name  </option>
+                        <option {% if viewmodel.orderBy|lower == "price" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/price/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                             Price </option>
-                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=gender">
+                        <option {% if viewmodel.orderBy|lower == "gender" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/gender/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
                             Gender </option>
                     </select>
-                    <a title="Set Descending Direction" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=desc&amp;order=position">
-                        <img class="v-middle" alt="Set Descending Direction" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_asc_arrow.gif"></a>
+                    {% if viewmodel.sortOrder == "asc" %}
+                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/desc/{{ viewmodel.mode }}/" title="Set Descending Direction"><img src="{% static "img/i_asc_arrow.gif" %}" alt="Set Descending Direction" class="v-middle"></a>
+                    {% else %}
+                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/asc/{{ viewmodel.mode }}/" title="Set Ascending Direction"><img src="{% static "img/i_desc_arrow.gif" %}" alt="Set Ascending Direction" class="v-middle"></a>
+                    {% endif %}
                 </div>
             </div>
         </div>

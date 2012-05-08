@@ -105,7 +105,7 @@ ROOT_URLCONF = 'PerfumeShop.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'PerfumeShop.wsgi.application'
 
-TEMPLATE_DIRS = ('C:/Users/thinhduong/PycharmProjects/PerfumeShop/templates',)
+TEMPLATE_DIRS = ('C:/Users/thinhduong/PycharmProjects/PS/templates',)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
