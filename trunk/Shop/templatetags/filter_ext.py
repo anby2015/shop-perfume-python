@@ -5,38 +5,50 @@ register = template.Library()
 def __isOdd(num):
     return num & 1 and True or False
 
-@register.tag("getOldEven")
+@register.filter
 def get_odd_even(value):
     if __isOdd(value):
         return 'odd'
     else:
         return 'even'
 
-@register.tag("getSubList")
+@register.filter(is_safe=True)
 def get_sub_list(value, arg):
-    return value[arg]
+    lstSize = len(value)
+    endIndex = arg + 3
+    if lstSize < arg + 3:
+        endIndex = lstSize
+    return value._result_cache[arg : endIndex]
 
-@register.tag
-def len(value):
-    return len(value)
+@register.filter(is_safe=True)
+def get_split_list(value, arg):
+    return value[::arg]
 
-@register.tag
-def range(value):
-    return range(value)
-
-@register.tag
+@register.filter
 def get_first_last(value, arg):
-    if value == arg[0]:
+    index = value.index(arg)
+    if not index:
         return 'first'
-    if value == len(arg):
+    if index == len(value):
         return 'last'
     return ''
 
-@register.tag
-def add(value, arg):
+@register.filter
+def get_add(value, arg):
     return value + arg
 
-@register.tag
-def mul(value, arg):
+@register.filter
+def get_mul(value, arg):
     return value * arg
+
+@register.filter
+def get_split_and_range(value, arg):
+    return range(len(value[::arg]))
+
+@register.filter
+def new_list(value):
+    lst = []
+    for obj in value:
+        lst.append(obj)
+    return lst
 
