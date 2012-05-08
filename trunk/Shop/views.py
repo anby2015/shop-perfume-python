@@ -8,7 +8,7 @@ def index(request):
 
     return render_to_response('Shop/index.html', {'products': newestProducts, 'menus': get_main_menu(), 'paths': []})
 
-def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='desc'):
+def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='desc', mode='grid'):
     category = Category.objects.get(slug=slug)
     categoryIdList = [category.id]
     for subCategory in category.children.all():
@@ -27,7 +27,8 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
                  'pIndex' : pIndex,
                  'pSize' : str(pSize),
                  'orderBy' : orderBy,
-                 'sortOrder' : sortOrder}
+                 'sortOrder' : sortOrder,
+                 'mode': mode }
 
     return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel, 'menus': get_main_menu(), 'paths': get_menu_path(category)})
 
