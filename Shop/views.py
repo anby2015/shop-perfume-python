@@ -21,8 +21,7 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
 
     paginator = Paginator(query.all(), pSize)
 
-    viewmodel = {'paginator': paginator,
-                 'curPage': paginator.page(pIndex),
+    viewmodel = {'curPage': paginator.page(pIndex),
                  'category' : category,
                  'pIndex' : pIndex,
                  'pSize' : str(pSize),
