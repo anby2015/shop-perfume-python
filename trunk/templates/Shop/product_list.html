@@ -1,0 +1,471 @@
+{% extends "Shop/base.html" %}
+
+{% load staticfiles %}
+
+{% block main %}
+    <div class="col-main">
+    <div class="page-title category-title">
+        <h1> {{ viewmodel.category.name }} </h1>
+    </div>
+    <div class="category-products">
+    <div class="toolbar">
+        <div class="pager">
+            <p class="amount">
+                Items {{ viewmodel.curPage.start_index }} to {{ viewmodel.curPage.end_index }} of {{ viewmodel.paginator.count }} total
+            </p>
+            <div class="limiter">
+                <label> Show</label>
+                <select onchange="setLocation(this.value)">
+                    <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/">
+                        9 </option>
+                    <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/">
+                        15 </option>
+                    <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/">
+                        30 </option>
+                </select>
+                per page
+            </div>
+            <div class="pages">
+                <strong>Page:</strong>
+                <ol>
+                    {% if viewmodel.paginator.has_previous %}
+                        <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.previous_page_number }}</a></li>
+                        <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
+                    {% endif %}
+                    <li class='current'>{{ viewmodel.pIndex }}</li>
+                    {% if viewmodel.paginator.has_next  %}
+                        <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.next_page_number }}</a></li>
+                        <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
+                    {% endif %}
+                </ol>
+            </div>
+        </div>
+        <div class="sorter">
+            <p class="view-mode">
+                <label> View as:</label>
+{#                @Html.Raw(Html.ItemsMode(Model).ToHtmlString())#}
+            </p>
+            <div class="sort-by">
+                <label>Sort By</label>
+{#                @Html.Raw(Html.ItemsOrderBySelectControl(Model).ToHtmlString())#}
+            </div>
+        </div>
+    </div>
+    <ul class="products-grid first odd">
+        <li class="item first"><a class="product-image" title="Aqua Allegoria" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/aqua-allegoria.html">
+            <img width="160" height="160" alt="Aqua Allegoria" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/a/q/aqua-allegoria.jpg"></a>
+            <h2 class="product-name">
+                <a title="Aqua Allegoria" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/aqua-allegoria.html">
+                    Aqua Allegoria</a></h2>
+            <div class="gender">
+                <img title="Male" alt="Male" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-male.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-167" class="regular-price"><span class="price">$120.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/167/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/167/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/167/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item"><a class="product-image" title="Very Hollywood" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/very-hollywood.html">
+            <img width="160" height="160" alt="Very Hollywood" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/v/e/very-hollywood.jpg"></a>
+            <h2 class="product-name">
+                <a title="Very Hollywood" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/very-hollywood.html">
+                    Very Hollywood</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-168" class="regular-price"><span class="price">$85.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/168/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/168/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/168/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item last"><a class="product-image" title="Michael Kors" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-169.html">
+            <img width="160" height="160" alt="Michael Kors" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/m/i/michael-kors.jpg"></a>
+            <h2 class="product-name">
+                <a title="Michael Kors" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-169.html">
+                    Michael Kors</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-169" class="regular-price"><span class="price">$120.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/169/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/169/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/169/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="products-grid even">
+        <li class="item first"><a class="product-image" title="New York Fling" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-170.html">
+            <img width="160" height="160" alt="New York Fling" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/n/e/new-york-fling.jpg"></a>
+            <h2 class="product-name">
+                <a title="New York Fling" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-170.html">
+                    New York Fling</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-170" class="regular-price"><span class="price">$120.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/170/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/170/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/170/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item"><a class="product-image" title="Miss Dior Cherie l'Eau" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-171.html">
+            <img width="160" height="160" alt="Miss Dior Cherie l'Eau" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/m/i/miss-dior-cherie-l-eau.jpg"></a>
+            <h2 class="product-name">
+                <a title="Miss Dior Cherie l'Eau" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-171.html">
+                    Miss Dior Cherie l'Eau</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-171" class="regular-price"><span class="price">$82.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/171/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/171/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/171/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item last"><a class="product-image" title="Daisy" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/daisy.html">
+            <img width="160" height="160" alt="Daisy" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/d/a/daisy.jpg"></a>
+            <h2 class="product-name">
+                <a title="Daisy" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/daisy.html">
+                    Daisy</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-172" class="regular-price"><span class="price">$85.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/172/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/172/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/172/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="products-grid odd">
+        <li class="item first"><a class="product-image" title="Feerie" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/feerie.html">
+            <img width="160" height="160" alt="Feerie" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/f/e/feerie.jpg"></a>
+            <h2 class="product-name">
+                <a title="Feerie" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/feerie.html">
+                    Feerie</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-173" class="regular-price"><span class="price">$120.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/173/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/173/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/173/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item"><a class="product-image" title="Hidden Fantasy" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/hidden-fantasy.html">
+            <img width="160" height="160" alt="Hidden Fantasy" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/h/i/hidden-fantasy.jpg"></a>
+            <h2 class="product-name">
+                <a title="Hidden Fantasy" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/hidden-fantasy.html">
+                    Hidden Fantasy</a></h2>
+            <div class="gender">
+                <img title="Male" alt="Male" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-male.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-174" class="regular-price"><span class="price">$55.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/174/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/174/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/174/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item last"><a class="product-image" title="L'Eau the One" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/l-eau-the-one.html">
+            <img width="160" height="160" alt="L'Eau the One" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/l/-/l-eau-the-one.jpg"></a>
+            <h2 class="product-name">
+                <a title="L'Eau the One" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/l-eau-the-one.html">
+                    L'Eau the One</a></h2>
+            <div class="gender">
+                <img title="Male" alt="Male" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-male.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-175" class="regular-price"><span class="price">$80.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/175/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/175/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/175/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="products-grid even">
+        <li class="item first"><a class="product-image" title="The One" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/the-one.html">
+            <img width="160" height="160" alt="The One" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/t/h/the-one.jpg"></a>
+            <h2 class="product-name">
+                <a title="The One" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/the-one.html">
+                    The One</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-176" class="regular-price"><span class="price">$90.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/176/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/176/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/176/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item"><a class="product-image" title="Brooklyn" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/lola.html">
+            <img width="160" height="160" alt="Brooklyn" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/b/r/brooklyn.jpg"></a>
+            <h2 class="product-name">
+                <a title="Brooklyn" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/lola.html">
+                    Brooklyn</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-177" class="regular-price"><span class="price">$145.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/177/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/177/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/177/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item last"><a class="product-image" title="First" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/first.html">
+            <img width="160" height="160" alt="First" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/f/i/first-love.jpg"></a>
+            <h2 class="product-name">
+                <a title="First" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/first.html">
+                    First</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-178" class="regular-price"><span class="price">$49.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/178/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/178/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/178/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="products-grid last odd">
+        <li class="item first"><a class="product-image" title="First Love" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/first-179.html">
+            <img width="160" height="160" alt="First Love" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/f/i/first.jpg"></a>
+            <h2 class="product-name">
+                <a title="First Love" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/first-179.html">
+                    First Love</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-179" class="regular-price"><span class="price">$90.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/179/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/179/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/179/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item"><a class="product-image" title="In Control Curious" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/in-control-curious.html">
+            <img width="160" height="160" alt="In Control Curious" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/i/n/in-control-curious.jpg"></a>
+            <h2 class="product-name">
+                <a title="In Control Curious" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/in-control-curious.html">
+                    In Control Curious</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-180" class="regular-price"><span class="price">$52.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/180/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/180/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/180/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+        <li class="item last"><a class="product-image" title="Curious" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/curious.html">
+            <img width="160" height="160" alt="Curious" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/c/u/curious.jpg"></a>
+            <h2 class="product-name">
+                <a title="Curious" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/curious.html">
+                    Curious</a></h2>
+            <div class="gender">
+                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>
+            <div class="price-box">
+                    <span id="product-price-181" class="regular-price"><span class="price">$49.00</span>
+                    </span>
+            </div>
+            <div class="actions">
+                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/181/')"
+                        class="button btn-cart" title="Add to Cart" type="button">
+                    <span><span>Add to Cart</span></span></button>
+            </div>
+            <ul class="add-to-links">
+                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/181/">
+                    Add to Wishlist</a></li>
+                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/181/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">
+                    Add to Compare</a></li>
+            </ul>
+        </li>
+    </ul>
+    <script type="text/javascript">            decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+    <div class="toolbar-bottom">
+        <div class="toolbar">
+            <div class="pager">
+                <p class="amount">
+                    Items 1 to 15 of 20 total
+                </p>
+                <div class="limiter">
+                    <label>
+                        Show</label>
+                    <select onchange="setLocation(this.value)">
+                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?limit=9">
+                            9 </option>
+                        <option selected="selected" value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?limit=15">
+                            15 </option>
+                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?limit=30">
+                            30 </option>
+                    </select>
+                    per page
+                </div>
+                <div class="pages">
+                    <strong>Page:</strong>
+                    <ol>
+                        <li class="current">1</li>
+                        <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?p=2">
+                            2</a></li>
+                        <li><a title="Next" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?p=2"
+                               class="next i-next">
+                            <img class="v-middle" alt="Next" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/base/default/images/pager_arrow_right.gif">
+                        </a></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="sorter">
+                <p class="view-mode">
+                    <label>
+                        View as:</label>
+                    <strong class="grid" title="Grid">Grid</strong>&nbsp; <a class="list" title="List"
+                                                                             href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?mode=list">
+                    List</a>&nbsp;
+                </p>
+                <div class="sort-by">
+                    <label>
+                        Sort By</label>
+                    <select onchange="setLocation(this.value)">
+                        <option selected="selected" value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=position">
+                            Position </option>
+                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=name">
+                            Name </option>
+                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=price">
+                            Price </option>
+                        <option value="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=asc&amp;order=gender">
+                            Gender </option>
+                    </select>
+                    <a title="Set Descending Direction" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume.html?dir=desc&amp;order=position">
+                        <img class="v-middle" alt="Set Descending Direction" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_asc_arrow.gif"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
