@@ -1,0 +1,95 @@
+{% load staticfiles %}
+
+<div class="nav-container">
+    <ul id="nav">
+        {% for menu in menus %}
+            <li class='{{ menu.cssClass }}' id="">
+                <a href='{{ menu.link }}' class="level-top">
+                    <span>{{ menu.displayName }}</span>
+                </a>
+                <ul class="level0">
+                    {% for subMenu in menu.children %}
+                        <li class='{{ subMenu.cssClass }}' id="">
+                            <a href='{{ subMenu.link }}'>
+                                <span>{{ subMenu.displayName }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% if paths %}
+    <div class="area2-container">
+        <div class="area2">
+            <div class="breadcrumbs">
+                <ul>
+                    <li class="home"><a href="{% url index %}" title="Go to Home Page">
+                        Home</a> <span>/ </span></li>
+                    {% for path in paths %}
+                        {% if path.isLast %}
+                            <li><strong>{{ path.displayName }}</strong> </li>
+                        {% else %}
+                            <li class="{{ path }}">
+                                <a href="{{ path.link }}" title="">{{ path.displayName }}</a>
+                                <span>/ </span>
+                            </li>
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="block block-freeshipping">
+                <p>
+                    Free shipping in HCM City
+                </p>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="area1-container">
+        <div class="area1">
+            <div class="slideshow">
+                <div class="slideshow-box">
+                    <ul style="width: 1896px; position: relative; top: 0px; left: -443px;">
+                        <li><a href="#">
+                            <img alt="Calvin Klein" src="{% static "img/calvin-klein.png" %}" title="Calvin Klein"></a>
+                            <p>
+                                Euphoria by Calvin Klein now start at <span class="price">$32.93</span></p>
+                        </li>
+                        <li><a href="#">
+                            <img alt="Gucci" src="{% static "img/gucci.png" %}" title="Gucci"></a>
+                            <p>
+                                Fiora by Gucci now start at <span class="price">$48.53</span></p>
+                        </li>
+                        <li><a href="#">
+                            <img alt="Moschino" src="{% static "img/moschino.png" %}"  title="Moschino"></a>
+                            <p>
+                                Glamour by Moschino now start at <span class="price">$43.99</span></p>
+                        </li>
+                        <li><a href="#">
+                            <img alt="Calvin Klein" src="{% static "img/calvin-klein.png" %}"
+                                 title="Calvin Klein"></a>
+                            <p>
+                                Euphoria by Calvin Klein now start at <span class="price">$32.93</span></p>
+                        </li>
+                        <li><a href="#">
+                            <img alt="Gucci" src="{% static "img/gucci.png" %}"
+                                 title="Gucci"></a>
+                            <p>
+                                Fiora by Gucci now start at <span class="price">$48.53</span></p>
+                        </li>
+                        <li><a href="#">
+                            <img alt="Moschino" src="{% static "img/moschino.png" %}"
+                                 title="Moschino"></a>
+                            <p>
+                                Glamour by Moschino now start at <span class="price">$43.99</span></p>
+                        </li>
+                    </ul>
+                </div>
+                <a class="previous" href="#">Previous</a> <a class="next" href="#">Next</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
