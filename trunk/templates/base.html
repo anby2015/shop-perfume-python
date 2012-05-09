@@ -1,0 +1,149 @@
+{% load staticfiles tag_ext %}
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Home page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Default Description" />
+    <meta name="keywords" content="Magento, Varien, E-commerce" />
+    <meta name="robots" content="INDEX,FOLLOW" />
+    <link rel="icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
+    <script type="text/javascript">
+    </script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/widgets.css" %}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/print.css" %}" media="print" />
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/prototype.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/ccard.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/validation.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/builder.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/effects.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/dragdrop.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/controls.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/slider.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/js.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/form.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/menu.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/translate.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/cookies.js" %}"></script>
+    <script type="text/javascript" src="{% static "Scripts/ExternalScripts/em0008.js" %}"></script>
+    <!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="{% static "css/styles-ie.css" %}" media="all" />
+<![endif]-->
+    <!--[if lt IE 7]>
+<script type="text/javascript" src="{% static "Scripts/ExternalScripts/ds-sleight.js" %}"></script>
+<script type="text/javascript" src="{% static "Scripts/ExternalScripts/ie6.js" %}"></script>
+<![endif]-->
+</head>
+<body class=" cms-index-index cms-home">
+<div class="wrapper">
+<div class="page">
+    <div class="header-container">
+        <div class="header">
+            <h1 class="logo">
+                <strong>Magento Commerce</strong> <a title="Magento Commerce" class="logo">
+                <img src="{% static "img/logo.png" %}" alt="Magento Commerce" />
+            </a>
+            </h1>
+            <div class="quick-access">
+                <form id="search_mini_form" action="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalogsearch/result/"
+                      method="get">
+                    <div class="form-search">
+                        <label for="search">
+                            Search:</label>
+                        <input id="search" type="text" name="q" value="" class="input-text" autocomplete="off" />
+                        <button type="submit" title="Search" class="button">
+                            <span><span>Search</span></span></button>
+                        <div id="search_autocomplete" class="search-autocomplete" style="display: none;">
+                        </div>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+                            searchForm.initAutocomplete('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalogsearch/ajax/suggest/', 'search_autocomplete');
+                            //]]>
+                        </script>
+                    </div>
+                </form>
+                <ul class="links">
+                    <li class="first"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer/account/"
+                                         title="My Account">My Account</a></li>
+                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/"
+                           title="My Wishlist">My Wishlist</a></li>
+                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/"
+                           title="My Cart" class="top-link-cart">My Cart</a></li>
+                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/"
+                           title="Checkout" class="top-link-checkout">Checkout</a></li>
+                    <li class=" last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer/account/login/"
+                                         title="Log In">Log In</a></li>
+                </ul>
+                <p class="welcome-msg">
+                    Default welcome msg!</p>
+            </div>
+        </div>
+    </div>
+
+{# render menu and its path #}
+    {% render_menu viewmodel.category %}
+
+{# render the main content #}
+    {% block mainContent %}
+
+    {% endblock %}
+
+    <div class="footer-container">
+        <div class="footer">
+            <div class="col-1">
+                <div class="block block-voucher">
+                    <div class="block-content">
+                        <h3>
+                            Gift voucher</h3>
+                        <p>
+                            Special Gift your friend.<br>
+                            Try your luck on our promotion...</p>
+                    </div>
+                    <p class="order">
+                        <a href="#">Order Now!</a></p>
+                </div>
+            </div>
+            <div class="col-2">
+                <ul class="links">
+                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/about-magento-demo-store">
+                        About Us</a></li>
+                    <li class="last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer-service">
+                        Customer Service</a></li>
+                </ul>
+                <ul>
+                    <li class="first"><a title="Careers" href="#">Careers</a> </li>
+                    <li><a title="Investor Relations" href="">Investor Relations</a> </li>
+                    <li><a title="Nordstrom Rack" href="#">Nordstrom Rack</a> </li>
+                    <li class=" last"><a title="Store Locations &amp; Events" href="#">Store Locations &amp;
+                        Events</a> </li>
+                </ul>
+                <!-- end of links -->
+                <ul class="links">
+                    <li class="first"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/seo_sitemap/category/"
+                                         title="Site Map">Site Map</a></li>
+                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalogsearch/term/popular/"
+                           title="Search Terms">Search Terms</a></li>
+                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalogsearch/advanced/"
+                           title="Advanced Search">Advanced Search</a></li>
+                    <li class=" last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/contacts/"
+                                         title="Contact Us">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="paypal-logo">
+                <a href="#" title="Additional Options" onclick="javascript:window.open('https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','paypal','width=600,height=350,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;">
+                    <img src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/bkg_paypal-accept.png"
+                         alt="Additional Options">
+                </a>
+            </div>
+            <address>
+                ɠ2010 ExtremeMagento Demo Store. All Rights Reserved.<br>
+                <em>Designed by ExtremeMagento</em></address>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
