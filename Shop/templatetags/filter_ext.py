@@ -14,6 +14,7 @@ def get_odd_even(value):
 
 @register.filter(is_safe=True)
 def get_sub_list(value, arg):
+    arg *= 3
     lstSize = len(value)
     endIndex = arg + 3
     if lstSize < arg + 3:
@@ -29,7 +30,7 @@ def get_first_last(value, arg):
     index = value.index(arg)
     if not index:
         return 'first'
-    if index == len(value):
+    if index == len(value) - 1:
         return 'last'
     return ''
 
