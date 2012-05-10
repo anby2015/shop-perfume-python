@@ -1,0 +1,66 @@
+{% load staticfiles %}
+
+<div class="toolbar">
+    <div class="pager">
+        <p class="amount">
+            Items {{ viewmodel.curPage.start_index }} to {{ viewmodel.curPage.end_index }} of {{ viewmodel.curPage.paginator.count }} total
+        </p>
+        <div class="limiter">
+            <label> Show</label>
+            <select onchange="setLocation(this.value)">
+                <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                    9 </option>
+                <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                    15 </option>
+                <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                    30 </option>
+            </select>
+            per page
+        </div>
+        <div class="pages">
+            <strong>Page:</strong>
+            <ol>
+                {% if viewmodel.paginator.has_previous %}
+                    <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.previous_page_number }}</a></li>
+                    <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
+                {% endif %}
+                <li class='current'>{{ viewmodel.pIndex }}</li>
+                {% if viewmodel.paginator.has_next  %}
+                    <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.next_page_number }}</a></li>
+                    <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
+                {% endif %}
+            </ol>
+        </div>
+    </div>
+    <div class="sorter">
+        <p class="view-mode">
+            <label> View as:</label>
+            {% if viewmodel.mode == 'grid' %}
+                <strong title="Grid" class="grid">Grid</strong>
+            {% else %}
+                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/grid/" title="Grid" class="grid">Grid</a>
+            {% endif %}
+            {% if viewmodel.mode == 'list' %}
+                <strong title="List" class="list">List</strong>
+            {% else %}
+                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/list/" title="List" class="list">List</a>
+            {% endif %}
+        </p>
+        <div class="sort-by">
+            <label>Sort By</label>
+            <select onchange="setLocation(this.value)">
+                <option {% if viewmodel.orderBy|lower == "name" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/name/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                    Name  </option>
+                <option {% if viewmodel.orderBy|lower == "price" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/price/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                    Price </option>
+                <option {% if viewmodel.orderBy|lower == "gender" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/gender/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                    Gender </option>
+            </select>
+            {% if viewmodel.sortOrder == "asc" %}
+                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/desc/{{ viewmodel.mode }}/" title="Set Descending Direction"><img src="{% static "img/i_asc_arrow.gif" %}" alt="Set Descending Direction" class="v-middle"></a>
+            {% else %}
+                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/asc/{{ viewmodel.mode }}/" title="Set Ascending Direction"><img src="{% static "img/i_desc_arrow.gif" %}" alt="Set Ascending Direction" class="v-middle"></a>
+            {% endif %}
+        </div>
+    </div>
+</div>

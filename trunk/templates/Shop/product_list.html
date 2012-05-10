@@ -1,6 +1,6 @@
 {% extends "Shop/shopbase.html" %}
 
-{% load staticfiles filter_ext %}
+{% load staticfiles filter_ext tag_ext %}
 
 {% block main %}
     <div class="col-main">
@@ -8,248 +8,19 @@
         <h1> {{ viewmodel.category.name }} </h1>
     </div>
     <div class="category-products">
-    <div class="toolbar">
-        <div class="pager">
-            <p class="amount">
-                Items {{ viewmodel.curPage.start_index }} to {{ viewmodel.curPage.end_index }} of {{ viewmodel.curPage.paginator.count }} total
-            </p>
-            <div class="limiter">
-                <label> Show</label>
-                <select onchange="setLocation(this.value)">
-                    <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                        9 </option>
-                    <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                        15 </option>
-                    <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                        30 </option>
-                </select>
-                per page
-            </div>
-            <div class="pages">
-                <strong>Page:</strong>
-                <ol>
-                    {% if viewmodel.paginator.has_previous %}
-                        <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.previous_page_number }}</a></li>
-                        <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
-                    {% endif %}
-                    <li class='current'>{{ viewmodel.pIndex }}</li>
-                    {% if viewmodel.paginator.has_next  %}
-                        <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.next_page_number }}</a></li>
-                        <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
-                    {% endif %}
-                </ol>
-            </div>
-        </div>
-        <div class="sorter">
-            <p class="view-mode">
-                <label> View as:</label>
-                {% if viewmodel.mode == 'grid' %}
-                    <strong title="Grid" class="grid">Grid</strong>
-                {% else %}
-                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/grid/" title="Grid" class="grid">Grid</a>
-                {% endif %}
-                {% if viewmodel.mode == 'list' %}
-                    <strong title="List" class="list">List</strong>
-                {% else %}
-                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/list/" title="List" class="list">List</a>
-                {% endif %}
-            </p>
-            <div class="sort-by">
-                <label>Sort By</label>
-                <select onchange="setLocation(this.value)">
-                    <option {% if viewmodel.orderBy|lower == "name" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/name/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                        Name  </option>
-                    <option {% if viewmodel.orderBy|lower == "price" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/price/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                        Price </option>
-                    <option {% if viewmodel.orderBy|lower == "gender" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/gender/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                        Gender </option>
-                </select>
-                {% if viewmodel.sortOrder == "asc" %}
-                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/desc/{{ viewmodel.mode }}/" title="Set Descending Direction"><img src="{% static "img/i_asc_arrow.gif" %}" alt="Set Descending Direction" class="v-middle"></a>
-                {% else %}
-                    <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/asc/{{ viewmodel.mode }}/" title="Set Ascending Direction"><img src="{% static "img/i_desc_arrow.gif" %}" alt="Set Ascending Direction" class="v-middle"></a>
-                {% endif %}
-            </div>
-        </div>
-    </div>
 
-    {% with cur_page_range=viewmodel.curPage.object_list|get_split_and_range:3 %}
-        {% for index in cur_page_range %}
-            <ul class="products-grid {{ cur_page_range|get_first_last:index }} {{ index|get_odd_even }}">
-                {% with items=viewmodel.curPage.object_list|get_sub_list:index %}
-                    {% for item in items %}
-                        <li class="item {{ items|get_first_last:item }}">
-                        <a class="product-image" title="{{ item.name }}" href="{{ item.get_absolute_url }}">
-                            <img width="160" height="160" alt="{{ item.name }}" src="{% static "img/aqua-allegoria.jpg" %}" />
-                        </a>
-                        <h2 class="product-name">
-                            <a title="{{ item.name }}" href="{{ item.get_absolute_url }}">{{ item.name }}</a>
-                        </h2>
-    {#                    <div class="gender">#}
-    {#                        <img title="Male" alt="Male" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-male.gif">#}
-    {#                    </div>#}
-                        <div class="price-box">
-                            <span id="product-price-{{ item.id }}" class="regular-price"><span class="price">{{ item.price }}</span></span>
-                        </div>
-    {#                    <div class="actions">#}
-    {#                        <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/167/')"#}
-    {#                                class="button btn-cart" title="Add to Cart" type="button">#}
-    {#                            <span><span>Add to Cart</span></span></button>#}
-    {#                    </div>#}
-    {#                    <ul class="add-to-links">#}
-    {#                        <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/167/">#}
-    {#                            Add to Wishlist</a></li>#}
-    {#                        <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/167/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">#}
-    {#                            Add to Compare</a></li>#}
-    {#                    </ul>#}
-                        </li>
-                    {% endfor %}
-                {% endwith %}
-            </ul>
-        {% endfor %}
-    {% endwith %}
+    {% include 'Shop/toolbar.html' %}
 
-{#    <ul class="products-grid first odd">#}
-{#        <li class="item first">#}
-{#            <a class="product-image" title="Aqua Allegoria" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/aqua-allegoria.html">#}
-{#            <img width="160" height="160" alt="Aqua Allegoria" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/a/q/aqua-allegoria.jpg"></a>#}
-{#            <h2 class="product-name">#}
-{#                <a title="Aqua Allegoria" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/aqua-allegoria.html">#}
-{#                    Aqua Allegoria</a></h2>#}
-{#            <div class="gender">#}
-{#                <img title="Male" alt="Male" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-male.gif"></div>#}
-{#            <div class="price-box">#}
-{#                    <span id="product-price-167" class="regular-price"><span class="price">$120.00</span>#}
-{#                    </span>#}
-{#            </div>#}
-{#            <div class="actions">#}
-{#                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/167/')"#}
-{#                        class="button btn-cart" title="Add to Cart" type="button">#}
-{#                    <span><span>Add to Cart</span></span></button>#}
-{#            </div>#}
-{#            <ul class="add-to-links">#}
-{#                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/167/">#}
-{#                    Add to Wishlist</a></li>#}
-{#                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/167/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">#}
-{#                    Add to Compare</a></li>#}
-{#            </ul>#}
-{#        </li>#}
-{#        <li class="item"><a class="product-image" title="Very Hollywood" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/very-hollywood.html">#}
-{#            <img width="160" height="160" alt="Very Hollywood" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/v/e/very-hollywood.jpg"></a>#}
-{#            <h2 class="product-name">#}
-{#                <a title="Very Hollywood" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/very-hollywood.html">#}
-{#                    Very Hollywood</a></h2>#}
-{#            <div class="gender">#}
-{#                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>#}
-{#            <div class="price-box">#}
-{#                    <span id="product-price-168" class="regular-price"><span class="price">$85.00</span>#}
-{#                    </span>#}
-{#            </div>#}
-{#            <div class="actions">#}
-{#                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/168/')"#}
-{#                        class="button btn-cart" title="Add to Cart" type="button">#}
-{#                    <span><span>Add to Cart</span></span></button>#}
-{#            </div>#}
-{#            <ul class="add-to-links">#}
-{#                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/168/">#}
-{#                    Add to Wishlist</a></li>#}
-{#                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/168/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">#}
-{#                    Add to Compare</a></li>#}
-{#            </ul>#}
-{#        </li>#}
-{#        <li class="item last"><a class="product-image" title="Michael Kors" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-169.html">#}
-{#            <img width="160" height="160" alt="Michael Kors" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/small_image/160x/9df78eab33525d08d6e5fb8d27136e95/m/i/michael-kors.jpg"></a>#}
-{#            <h2 class="product-name">#}
-{#                <a title="Michael Kors" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/perfume/michael-kors-169.html">#}
-{#                    Michael Kors</a></h2>#}
-{#            <div class="gender">#}
-{#                <img title="Female" alt="Female" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-female.gif"></div>#}
-{#            <div class="price-box">#}
-{#                    <span id="product-price-169" class="regular-price"><span class="price">$120.00</span>#}
-{#                    </span>#}
-{#            </div>#}
-{#            <div class="actions">#}
-{#                <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/169/')"#}
-{#                        class="button btn-cart" title="Add to Cart" type="button">#}
-{#                    <span><span>Add to Cart</span></span></button>#}
-{#            </div>#}
-{#            <ul class="add-to-links">#}
-{#                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/169/">#}
-{#                    Add to Wishlist</a></li>#}
-{#                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/169/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">#}
-{#                    Add to Compare</a></li>#}
-{#            </ul>#}
-{#        </li>#}
-{#    </ul>#}
+    {% render_product_list viewmodel.curPage.object_list %}
 
     <script type="text/javascript">
-        decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+        decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])
+    </script>
+
     <div class="toolbar-bottom">
-        <div class="toolbar">
-            <div class="pager">
-                <p class="amount">
-                    Items {{ viewmodel.curPage.start_index }} to {{ viewmodel.curPage.end_index }} of {{ viewmodel.curPage.paginator.count }} total
-                </p>
-                <div class="limiter">
-                    <label> Show</label>
-                    <select onchange="setLocation(this.value)">
-                        <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                            9 </option>
-                        <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                            15 </option>
-                        <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                            30 </option>
-                    </select>
-                    per page
-                </div>
-                <div class="pages">
-                    <strong>Page:</strong>
-                    <ol>
-                        {% if viewmodel.curPage.has_previous %}
-                            <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.curPage.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.curPage.previous_page_number }}</a></li>
-                            <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.curPage.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
-                        {% endif %}
-                        <li class='current'>{{ viewmodel.pIndex }}</li>
-                        {% if viewmodel.curPage.has_next  %}
-                            <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.curPage.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.curPage.next_page_number }}</a></li>
-                            <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.curPage.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
-                        {% endif %}
-                    </ol>
-                </div>
-            </div>
-            <div class="sorter">
-                <p class="view-mode">
-                    <label> View as:</label>
-                    {% if viewmodel.mode == 'grid' %}
-                        <strong title="Grid" class="grid">Grid</strong>
-                    {% else %}
-                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/grid/" title="Grid" class="grid">Grid</a>
-                    {% endif %}
-                    {% if viewmodel.mode == 'list' %}
-                        <strong title="List" class="list">List</strong>
-                    {% else %}
-                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/list/" title="List" class="list">List</a>
-                    {% endif %}
-                </p>
-                <div class="sort-by">
-                    <label>Sort By</label>
-                    <select onchange="setLocation(this.value)">
-                        <option {% if viewmodel.orderBy|lower == "name" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/name/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                            Name  </option>
-                        <option {% if viewmodel.orderBy|lower == "price" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/price/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                            Price </option>
-                        <option {% if viewmodel.orderBy|lower == "gender" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/gender/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
-                            Gender </option>
-                    </select>
-                    {% if viewmodel.sortOrder == "asc" %}
-                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/desc/{{ viewmodel.mode }}/" title="Set Descending Direction"><img src="{% static "img/i_asc_arrow.gif" %}" alt="Set Descending Direction" class="v-middle"></a>
-                    {% else %}
-                        <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/asc/{{ viewmodel.mode }}/" title="Set Ascending Direction"><img src="{% static "img/i_desc_arrow.gif" %}" alt="Set Ascending Direction" class="v-middle"></a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+        {% include 'Shop/toolbar.html' %}
     </div>
+
     </div>
     </div>
 {% endblock %}

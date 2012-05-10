@@ -23,7 +23,7 @@
             <div class="col-main">
                 <div class="account-create">
                     <div class="page-title"> <h1>Create an Account</h1> </div>
-                    <form action="." method="post" id="form-validate">
+                    <form action="/accounts/register/" method="post" id="form-validate">
                         {% csrf_token %}
                         <div class="fieldset">
                             <input type="hidden" name="success_url" value="">
@@ -35,8 +35,7 @@
                                         <div class="field name-id_username">
                                             <label for="id_username" class="required"><em>*</em>User Name</label>
                                             <div class="input-box">
-{#                                                <input type="text" id="id_username" name="username" value="" title="User Name" class="input-text required-entry">#}
-                                                {{ form.username }}
+                                                <input type="text" id="id_username" name="username" value="" title="User Name" class="input-text required-entry">
                                             </div>
                                         </div>
                                     </div>
@@ -56,13 +55,13 @@
                                     <div class="field">
                                         <label for="id_password1" class="required"><em>*</em>Password</label>
                                         <div class="input-box">
-                                            <input type="password" name="password" id="id_password1" title="Password" class="input-text required-entry validate-password">
+                                            <input type="password" name="password1" id="id_password1" title="Password" class="input-text required-entry validate-password">
                                         </div>
                                     </div>
                                     <div class="field">
                                         <label for="id_password2" class="required"><em>*</em>Confirm Password</label>
                                         <div class="input-box">
-                                            <input type="password" name="confirmation" title="Confirm Password" id="id_password2" class="input-text required-entry validate-cpassword">
+                                            <input type="password" name="password2" title="Confirm Password" id="id_password2" class="input-text required-entry validate-cpassword">
                                         </div>
                                     </div>
                                 </li>

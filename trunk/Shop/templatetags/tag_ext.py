@@ -14,4 +14,9 @@ def render_menu(category):
 
     return { 'menus' : menus, 'paths' : paths }
 
+@register.inclusion_tag('Shop/render_product_list.html')
+def render_product_list(product_list):
+
+    return
+
 
