@@ -3,15 +3,14 @@
 {% load staticfiles filter_ext tag_ext %}
 
 {% block main %}
-    <div class="col-main">
     <div class="page-title category-title">
-        <h1> {{ viewmodel.category.name }} </h1>
+        <h1> {{ viewmodel.current.name }} </h1>
     </div>
     <div class="category-products">
 
     {% include 'Shop/toolbar.html' %}
 
-    {% render_product_list viewmodel.curPage.object_list %}
+    {% render_product_list viewmodel.curPage.object_list|new_list %}
 
     <script type="text/javascript">
         decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])
@@ -21,6 +20,5 @@
         {% include 'Shop/toolbar.html' %}
     </div>
 
-    </div>
     </div>
 {% endblock %}

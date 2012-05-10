@@ -1,14 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<h1>{{ object.name }}</h1>
-<p>{{ object.description }}</p>
-<p>Price: {{ object.price }}</p>
-<hr/>
-<p><a href="{% url product_list %}">Back to product list</a></p>
-</body>
-</html>
+{%  extends 'Shop/shopbase.html' %}
+
+{% block main %}
+
+    <h1>{{ viewmodel.current.name }}</h1>
+    <p>{{ viewmodel.current.price }}</p>
+
+{% endblock %}

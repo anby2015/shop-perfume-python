@@ -19,7 +19,7 @@ def get_sub_list(value, arg):
     endIndex = arg + 3
     if lstSize < arg + 3:
         endIndex = lstSize
-    return value._result_cache[arg : endIndex]
+    return value[arg : endIndex]
 
 @register.filter(is_safe=True)
 def get_split_list(value, arg):
@@ -44,7 +44,8 @@ def get_mul(value, arg):
 
 @register.filter
 def get_split_and_range(value, arg):
-    return range(len(value[::arg]))
+    a = range(len(value[::arg]))
+    return a
 
 @register.filter
 def new_list(value):

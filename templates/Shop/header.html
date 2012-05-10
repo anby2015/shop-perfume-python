@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<div class="header-container">
+    <div class="header">
+        <h1 class="logo">
+            <strong>Magento Commerce</strong> <a title="Magento Commerce" class="logo">
+            <img src="{% static "img/logo.png" %}" alt="Magento Commerce" />
+        </a>
+        </h1>
+        <div class="quick-access">
+            {% include "Shop/search_mini_form.html" %}
+            <ul class="links">
+                <li class="first"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer/account/"
+                                     title="My Account">My Account</a></li>
+                <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/"
+                       title="My Wishlist">My Wishlist</a></li>
+                <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/"
+                       title="My Cart" class="top-link-cart">My Cart</a></li>
+                <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/"
+                       title="Checkout" class="top-link-checkout">Checkout</a></li>
+                <li class=" last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer/account/login/"
+                                     title="Log In">Log In</a></li>
+            </ul>
+            <p class="welcome-msg">
+                Default welcome msg!</p>
+        </div>
+    </div>
+</div>
