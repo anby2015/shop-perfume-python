@@ -31,4 +31,20 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
 
     return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel})
 
+def search_result(request):
+    query = request.GET['q']
+
+    result = []
+
+    categoryResults = Category.objects.filter(name__contains=query)
+
+    for categoryResult in categoryResults:
+        result.extend(categoryResult.products.all())
+
+    result.extend(Product.objects.filter(name__contains=query).all())
+
+    result.sort('name')
+
+    return render_to_response('Shop/search_result.html', {'result': result})
+
 

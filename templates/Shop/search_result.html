@@ -1,0 +1,21 @@
+{% extends "Shop/shopbase.html" %}
+
+{% load staticfiles filter_ext tag_ext %}
+
+{% block main %}
+    <div class="col-main">
+        <div class="page-title category-title">
+            <h1>Search Results</h1>
+        </div>
+        <div class="category-products">
+
+            {% render_product_list result %}
+
+            <script type="text/javascript">
+                decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])
+            </script>
+
+        </div>
+    </div>
+{% endblock %}
+

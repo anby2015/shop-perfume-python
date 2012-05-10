@@ -13,5 +13,6 @@ urlpatterns = patterns('',
 #    url(r'^product/(?P<slug>[-\w]+)/$', 'object_detail',{'queryset' : Product.objects.all()}),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^search/result/$', views.search_result),
     url('', views.index, name='index'),
 )

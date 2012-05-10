@@ -1,0 +1,17 @@
+<form id="search_mini_form" action="/search/result/" method="get">
+    <div class="form-search">
+        <label for="search">
+            Search:</label>
+        <input id="search" type="text" name="q" value="" class="input-text" autocomplete="off" />
+        <button type="submit" title="Search" class="button">
+            <span><span>Search</span></span></button>
+        <div id="search_autocomplete" class="search-autocomplete" style="display: none;">
+        </div>
+        <script type="text/javascript">
+            //<![CDATA[
+            var searchForm = new Varien.searchForm('search_mini_form', 'search', 'Search entire store here...');
+            searchForm.initAutocomplete('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalogsearch/ajax/suggest/', 'search_autocomplete');
+            //]]>
+        </script>
+    </div>
+</form>
