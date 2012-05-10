@@ -1,12 +1,11 @@
 from django.core.paginator import Paginator
 from django.shortcuts import  render_to_response
-from Shop.menus import get_main_menu, get_menu_path
 from Shop.models import Product, Category
 
 def index(request):
     newestProducts = Product.objects.all().order_by('createdDate')[:10]
 
-    return render_to_response('Shop/index.html', {'products': newestProducts })
+    return render_to_response('Shop/index.html', {'products': newestProducts, 'is_display_banner' : True })
 
 def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='desc', mode='grid'):
     category = Category.objects.get(slug=slug)
@@ -22,7 +21,7 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
     paginator = Paginator(query.all(), pSize)
 
     viewmodel = {'curPage': paginator.page(pIndex),
-                 'category' : category,
+                 'current' : category,
                  'pIndex' : pIndex,
                  'pSize' : str(pSize),
                  'orderBy' : orderBy,
@@ -41,10 +40,16 @@ def search_result(request):
     for categoryResult in categoryResults:
         result.extend(categoryResult.products.all())
 
-    result.extend(Product.objects.filter(name__contains=query).all())
+    product_ids_list = [x.id for x in result]
 
-    result.sort('name')
+#    not in product_ids_list
+    result.extend(Product.objects.filter(id__in=product_ids_list).filter(name__contains=query).all())
 
     return render_to_response('Shop/search_result.html', {'result': result})
 
+def product_detail(request, slug):
+    product = Product.objects.get(slug=slug)
 
+    viewmodel = {'current' : product}
+
+    return render_to_response('Shop/product_detail.html', {'viewmodel' : viewmodel })

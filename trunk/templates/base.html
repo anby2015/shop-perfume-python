@@ -39,93 +39,19 @@
 <body class=" cms-index-index cms-home">
 <div class="wrapper">
 <div class="page">
-    <div class="header-container">
-        <div class="header">
-            <h1 class="logo">
-                <strong>Magento Commerce</strong> <a title="Magento Commerce" class="logo">
-                <img src="{% static "img/logo.png" %}" alt="Magento Commerce" />
-            </a>
-            </h1>
-            <div class="quick-access">
-                {% include "Shop/search_mini_form.html" %}
-                <ul class="links">
-                    <li class="first"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer/account/"
-                                         title="My Account">My Account</a></li>
-                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/"
-                           title="My Wishlist">My Wishlist</a></li>
-                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/"
-                           title="My Cart" class="top-link-cart">My Cart</a></li>
-                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/"
-                           title="Checkout" class="top-link-checkout">Checkout</a></li>
-                    <li class=" last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer/account/login/"
-                                         title="Log In">Log In</a></li>
-                </ul>
-                <p class="welcome-msg">
-                    Default welcome msg!</p>
-            </div>
-        </div>
-    </div>
+{#    render header #}
+    {% include 'Shop/header.html' %}
 
 {# render menu and its path #}
-    {% render_menu viewmodel.category %}
+    {% render_menu viewmodel.current is_display_banner %}
 
 {# render the main content #}
     {% block mainContent %}
 
     {% endblock %}
 
-    <div class="footer-container">
-        <div class="footer">
-            <div class="col-1">
-                <div class="block block-voucher">
-                    <div class="block-content">
-                        <h3>
-                            Gift voucher</h3>
-                        <p>
-                            Special Gift your friend.<br>
-                            Try your luck on our promotion...</p>
-                    </div>
-                    <p class="order">
-                        <a href="#">Order Now!</a></p>
-                </div>
-            </div>
-            <div class="col-2">
-                <ul class="links">
-                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/about-magento-demo-store">
-                        About Us</a></li>
-                    <li class="last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/customer-service">
-                        Customer Service</a></li>
-                </ul>
-                <ul>
-                    <li class="first"><a title="Careers" href="#">Careers</a> </li>
-                    <li><a title="Investor Relations" href="">Investor Relations</a> </li>
-                    <li><a title="Nordstrom Rack" href="#">Nordstrom Rack</a> </li>
-                    <li class=" last"><a title="Store Locations &amp; Events" href="#">Store Locations &amp;
-                        Events</a> </li>
-                </ul>
-                <!-- end of links -->
-                <ul class="links">
-                    <li class="first"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/seo_sitemap/category/"
-                                         title="Site Map">Site Map</a></li>
-                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalogsearch/term/popular/"
-                           title="Search Terms">Search Terms</a></li>
-                    <li><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalogsearch/advanced/"
-                           title="Advanced Search">Advanced Search</a></li>
-                    <li class=" last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/contacts/"
-                                         title="Contact Us">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="paypal-logo">
-                <a href="#" title="Additional Options" onclick="javascript:window.open('https://www.paypal.com/us/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','paypal','width=600,height=350,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;">
-                    <img src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/bkg_paypal-accept.png"
-                         alt="Additional Options">
-                </a>
-            </div>
-            <address>
-                ɠ2010 ExtremeMagento Demo Store. All Rights Reserved.<br>
-                <em>Designed by ExtremeMagento</em></address>
-        </div>
-    </div>
+{#  render footer   #}
+    {% include 'Shop/footer.html' %}
 </div>
 </div>
 </body>
