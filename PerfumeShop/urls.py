@@ -11,6 +11,6 @@ urlpatterns = patterns('',
     url(r'^product/(?P<slug>[-\w]+)/$', views.product_detail, name='product_detail'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.backends.default.urls')),
-    url(r'^search/result/$', views.search_result),
+    url(r'^search/result/(?P<query>[-\w]+)/$', views.search_result, name='search_result'),
     url('', views.index, name='index'),
 )

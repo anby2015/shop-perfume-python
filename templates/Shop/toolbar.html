@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles tag_ext %}
 
 <div class="toolbar">
     <div class="pager">
@@ -8,11 +8,11 @@
         <div class="limiter">
             <label> Show</label>
             <select onchange="setLocation(this.value)">
-                <option {% if viewmodel.pSize == "9" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/9/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                <option {% if viewmodel.display_info.pSize == "9" %} selected="selected" {% endif %} value="{% generate_url 'pSize' 9 %}">
                     9 </option>
-                <option {% if viewmodel.pSize == "15" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/15/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                <option {% if viewmodel.display_info.pSize == "15" %} selected="selected" {% endif %} value="{% generate_url 'pSize' 15 %}">
                     15 </option>
-                <option {% if viewmodel.pSize == "30" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/30/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                <option {% if viewmodel.display_info.pSize == "30" %} selected="selected" {% endif %} value="{% generate_url 'pSize' 30 %}">
                     30 </option>
             </select>
             per page
@@ -21,13 +21,13 @@
             <strong>Page:</strong>
             <ol>
                 {% if viewmodel.paginator.has_previous %}
-                    <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.previous_page_number }}</a></li>
-                    <li><a title='Prev' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.previous_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
+                    <li><a href='{% generate_url 'pIndex' viewmodel.paginator.previous_page_number %}'>{{ viewmodel.paginator.previous_page_number }}</a></li>
+                    <li><a title='Prev' href='{% generate_url 'pIndex' viewmodel.paginator.previous_page_number %}' class='next i-prev'><img class='v-middle' alt='Prev' src="{% static "img/pager_arrow_left.gif" %}" /></a></li>
                 {% endif %}
-                <li class='current'>{{ viewmodel.pIndex }}</li>
+                <li class='current'>{{ viewmodel.display_info.pIndex }}</li>
                 {% if viewmodel.paginator.has_next  %}
-                    <li><a href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/'>{{ viewmodel.paginator.next_page_number }}</a></li>
-                    <li><a title='Next' href='{{ viewmodel.category.get_absolute_url }}{{ viewmodel.paginator.next_page_number }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
+                    <li><a href='{% generate_url 'pIndex' viewmodel.paginator.next_page_number %}'>{{ viewmodel.paginator.next_page_number }}</a></li>
+                    <li><a title='Next' href='{% generate_url 'pIndex' viewmodel.paginator.next_page_number %}' class='next i-next'><img class='v-middle' alt='Next' src="{% static "img/pager_arrow_right.gif" %}" /></a></li>
                 {% endif %}
             </ol>
         </div>
@@ -35,31 +35,31 @@
     <div class="sorter">
         <p class="view-mode">
             <label> View as:</label>
-            {% if viewmodel.mode == 'grid' %}
+            {% if viewmodel.display_info.mode == 'grid' %}
                 <strong title="Grid" class="grid">Grid</strong>
             {% else %}
-                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/grid/" title="Grid" class="grid">Grid</a>
+                <a href="{% generate_url 'mode' 'grid' %}" title="Grid" class="grid">Grid</a>
             {% endif %}
-            {% if viewmodel.mode == 'list' %}
+            {% if viewmodel.display_info.mode == 'list' %}
                 <strong title="List" class="list">List</strong>
             {% else %}
-                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/{{ viewmodel.sortOrder }}/list/" title="List" class="list">List</a>
+                <a href="{% generate_url 'mode' 'list' %}" title="List" class="list">List</a>
             {% endif %}
         </p>
         <div class="sort-by">
             <label>Sort By</label>
             <select onchange="setLocation(this.value)">
-                <option {% if viewmodel.orderBy|lower == "name" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/name/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                <option {% if viewmodel.display_info.orderBy|lower == "name" %} selected="selected" {% endif %} value="{% generate_url 'orderBy' 'name' %}">
                     Name  </option>
-                <option {% if viewmodel.orderBy|lower == "price" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/price/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                <option {% if viewmodel.display_info.orderBy|lower == "price" %} selected="selected" {% endif %} value="{% generate_url 'orderBy' 'price' %}">
                     Price </option>
-                <option {% if viewmodel.orderBy|lower == "gender" %} selected="selected" {% endif %} value="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/gender/{{ viewmodel.sortOrder }}/{{ viewmodel.mode }}/">
+                <option {% if viewmodel.display_info.orderBy|lower == "gender" %} selected="selected" {% endif %} value="{% generate_url 'orderBy' 'gender' %}">
                     Gender </option>
             </select>
-            {% if viewmodel.sortOrder == "asc" %}
-                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/desc/{{ viewmodel.mode }}/" title="Set Descending Direction"><img src="{% static "img/i_asc_arrow.gif" %}" alt="Set Descending Direction" class="v-middle"></a>
+            {% if viewmodel.display_info.sortOrder == "asc" %}
+                <a href="{% generate_url 'sortOrder' 'desc' %}" title="Set Descending Direction"><img src="{% static "img/i_asc_arrow.gif" %}" alt="Set Descending Direction" class="v-middle"></a>
             {% else %}
-                <a href="{{ viewmodel.category.get_absolute_url }}{{ viewmodel.pIndex }}/{{ viewmodel.pSize }}/{{ viewmodel.orderBy }}/asc/{{ viewmodel.mode }}/" title="Set Ascending Direction"><img src="{% static "img/i_desc_arrow.gif" %}" alt="Set Ascending Direction" class="v-middle"></a>
+                <a href="{% generate_url 'sortOrder' 'asc' %}" title="Set Ascending Direction"><img src="{% static "img/i_desc_arrow.gif" %}" alt="Set Ascending Direction" class="v-middle"></a>
             {% endif %}
         </div>
     </div>
