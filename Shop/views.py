@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator
+from django.db.models.query_utils import Q
 from django.shortcuts import  render_to_response
 from django.template.context import RequestContext
 from Shop.models import Product, Category
@@ -17,7 +18,7 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
     query = Product.objects.filter(category__id__in=categoryIdList).order_by(orderBy)
 
     if sortOrder == 'desc':
-        query.reverse()
+        query = query.reverse()
 
     paginator = Paginator(query.all(), pSize)
 
@@ -33,22 +34,31 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
 
     return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel}, context_instance = RequestContext(request) )
 
-def search_result(request):
+def search_result(request, pIndex=1, pSize=15, orderBy='name', sortOrder='desc', mode='grid'):
     query = request.GET['q']
-
-    result = []
 
     categoryResults = Category.objects.filter(name__contains=query)
 
-    for categoryResult in categoryResults:
-        result.extend(categoryResult.products.all())
+    product_ids_list = [x.id for x in categoryResults]
 
-    product_ids_list = [x.id for x in result]
+    result = Product.objects.filter(Q(category_id__in=product_ids_list) | Q(name__contains=query)).order_by(orderBy)
 
-#    not in product_ids_list
-    result.extend(Product.objects.filter(id__in=product_ids_list).filter(name__contains=query).all())
+    if sortOrder == 'desc':
+        result = result.reverse()
 
-    return render_to_response('Shop/search_result.html', {'result': result})
+    paginator = Paginator(result, pSize)
+
+    display_info = {'pIndex' : pIndex,
+                    'pSize' : str(pSize),
+                    'orderBy' : orderBy,
+                    'sortOrder' : sortOrder,
+                    'mode': mode }
+
+    viewmodel = {'curPage': paginator.page(pIndex),
+                 'current' : None,
+                 'display_info': display_info }
+
+    return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel}, context_instance = RequestContext(request) )
 
 def product_detail(request, slug):
     product = Product.objects.get(slug=slug)

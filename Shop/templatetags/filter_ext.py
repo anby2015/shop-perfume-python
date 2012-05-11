@@ -44,8 +44,7 @@ def get_mul(value, arg):
 
 @register.filter
 def get_split_and_range(value, arg):
-    a = range(len(value[::arg]))
-    return a
+    return range(len(value[::arg]))
 
 @register.filter
 def new_list(value):
@@ -54,3 +53,10 @@ def new_list(value):
         lst.append(obj)
     return lst
 
+@register.filter
+def get_range(value):
+    return range(value)
+
+@register.filter
+def get_item(value, param):
+    return value[param]

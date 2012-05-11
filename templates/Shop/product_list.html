@@ -10,11 +10,9 @@
 
     {% include 'Shop/toolbar.html' %}
 
-    {% render_product_list viewmodel.curPage.object_list|new_list %}
+    {% render_product_list viewmodel.curPage.object_list|new_list viewmodel.display_info.mode %}
 
-    <script type="text/javascript">
-        decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])
-    </script>
+
 
     <div class="toolbar-bottom">
         {% include 'Shop/toolbar.html' %}
