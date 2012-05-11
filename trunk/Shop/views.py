@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import  render_to_response
+from django.template.context import RequestContext
 from Shop.models import Product, Category
 
 def index(request):
@@ -20,15 +21,17 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
 
     paginator = Paginator(query.all(), pSize)
 
+    display_info = {'pIndex' : pIndex,
+                   'pSize' : str(pSize),
+                   'orderBy' : orderBy,
+                   'sortOrder' : sortOrder,
+                   'mode': mode }
+
     viewmodel = {'curPage': paginator.page(pIndex),
                  'current' : category,
-                 'pIndex' : pIndex,
-                 'pSize' : str(pSize),
-                 'orderBy' : orderBy,
-                 'sortOrder' : sortOrder,
-                 'mode': mode }
+                 'display_info': display_info }
 
-    return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel})
+    return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel}, context_instance = RequestContext(request) )
 
 def search_result(request):
     query = request.GET['q']

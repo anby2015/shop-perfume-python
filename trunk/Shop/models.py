@@ -2,6 +2,8 @@ import datetime
 from django.core.urlresolvers import reverse
 
 from django.db import models
+from tagging.fields import TagField
+from tagging.models import Tag
 
 class Category(models.Model):
     """ The category """
@@ -24,6 +26,7 @@ class Product(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category, related_name="products")
     createdDate = models.DateTimeField(default=datetime.datetime.now())
+#    tags = TagField()
 
     def __unicode__(self):
         return self.name
@@ -31,5 +34,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'slug': self.slug})
 
-
+#    def get_tags(self):
+#        return Tag.objects.get_for_object(self)
+#
+#    def set_tags(self, tags):
+#        Tag.objects.update_tags(self, tags)
 
