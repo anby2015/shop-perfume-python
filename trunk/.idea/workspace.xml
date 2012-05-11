@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="5b1768e0-a291-4d94-9dae-6635fe063f7a" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\thinhduong\PycharmProjects\PS\templates\Shop\search_result.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PerfumeShop/urls.py" afterPath="$PROJECT_DIR$/PerfumeShop/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/models.py" afterPath="$PROJECT_DIR$/Shop/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/templatetags/filter_ext.py" afterPath="$PROJECT_DIR$/Shop/templatetags/filter_ext.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/templatetags/tag_ext.py" afterPath="$PROJECT_DIR$/Shop/templatetags/tag_ext.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/views.py" afterPath="$PROJECT_DIR$/Shop/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Shop/toolbar.html" afterPath="$PROJECT_DIR$/templates/Shop/toolbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Shop/index.html" afterPath="$PROJECT_DIR$/templates/Shop/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Shop/product_list.html" afterPath="$PROJECT_DIR$/templates/Shop/product_list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Shop/render_product_list.html" afterPath="$PROJECT_DIR$/templates/Shop/render_product_list.html" />
     </list>
     <ignored path="PerfumeShop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +37,61 @@
     <favorites_list name="PerfumeShop" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="render_product_list.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Shop/render_product_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="67" selection-start="3575" selection-end="3575" vertical-scroll-proportion="-5.8846154">
+              <folding>
+                <element signature="n#with#0;n#!!top" expanded="false" />
+                <element signature="tag#script#0" expanded="false" />
+                <element signature="tag#li#0;tag#ol#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product_list.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Shop/product_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="373" selection-end="373" vertical-scroll-proportion="-9.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Shop/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="40" selection-start="114" selection-end="114" vertical-scroll-proportion="-3.9230769">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filter_ext.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Shop/templatetags/filter_ext.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="28" selection-start="609" selection-end="609" vertical-scroll-proportion="0.22629969">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tag_ext.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Shop/templatetags/tag_ext.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="0" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+                <element signature="e#247#563#0" expanded="false" />
+                <element signature="e#852#1956#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -44,22 +101,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/Shop/header.html" />
         <option value="$PROJECT_DIR$/templates/menu.html" />
-        <option value="$PROJECT_DIR$/Shop/templatetags/filter_ext.py" />
-        <option value="$PROJECT_DIR$/templates/Shop/index.html" />
         <option value="$PROJECT_DIR$/templates/Shop/shopbase.html" />
         <option value="$PROJECT_DIR$/templates/Shop/search_result.html" />
-        <option value="$PROJECT_DIR$/templates/Shop/product_list.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/Shop/product_detail.html" />
         <option value="$PROJECT_DIR$/Shop/menus.py" />
         <option value="$PROJECT_DIR$/PerfumeShop/settings.py" />
-        <option value="$PROJECT_DIR$/PerfumeShop/urls.py" />
         <option value="$PROJECT_DIR$/Shop/models.py" />
+        <option value="$PROJECT_DIR$/templates/Shop/toolbar.html" />
+        <option value="$PROJECT_DIR$/PerfumeShop/urls.py" />
         <option value="$PROJECT_DIR$/Shop/views.py" />
         <option value="$PROJECT_DIR$/Shop/templatetags/tag_ext.py" />
-        <option value="$PROJECT_DIR$/templates/Shop/toolbar.html" />
+        <option value="$PROJECT_DIR$/templates/Shop/index.html" />
+        <option value="$PROJECT_DIR$/Shop/templatetags/filter_ext.py" />
+        <option value="$PROJECT_DIR$/templates/Shop/product_list.html" />
+        <option value="$PROJECT_DIR$/templates/Shop/render_product_list.html" />
       </list>
     </option>
   </component>
@@ -111,94 +168,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="PerfumeShop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Shop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templatetags" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -444,7 +413,11 @@
       <created>1336662206172</created>
       <updated>1336662206172</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="refractor generate_url">
+      <created>1336722059244</created>
+      <updated>1336722059244</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -471,12 +444,14 @@
     <frame x="54" y="-8" width="1320" height="784" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14251593" sideWeight="0.73397434" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43589744" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20063694" sideWeight="0.21794872" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19316375" sideWeight="0.5641026" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31089744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41346154" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.49761146" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50801283" sideWeight="0.4968153" order="2" side_tool="false" content_ui="tabs" />
@@ -484,8 +459,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -554,21 +527,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="2965" selection-end="2965" vertical-scroll-proportion="0.54862845" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Shop/product_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="27" selection-start="124" selection-end="124" vertical-scroll-proportion="0.21197008" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shop/menus.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="26" selection-start="1535" selection-end="1535" vertical-scroll-proportion="0.46618357" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PerfumeShop/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="111" column="33" selection-start="4065" selection-end="4065" vertical-scroll-proportion="0.89602447" />
@@ -581,66 +539,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Shop/search_result.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="10" selection-start="417" selection-end="417" vertical-scroll-proportion="0.47469458" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PerfumeShop/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="34" selection-start="698" selection-end="698" vertical-scroll-proportion="0.3771331">
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Shop/search_mini_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="10" selection-start="864" selection-end="864" vertical-scroll-proportion="0.45535713">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Shop/product_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="35" selection-start="234" selection-end="234" vertical-scroll-proportion="0.4848485">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Shop/toolbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="20" selection-start="938" selection-end="938" vertical-scroll-proportion="0.321513">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shop/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="123" selection-start="1315" selection-end="1315" vertical-scroll-proportion="0.63203466">
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-            <element signature="e#211#387#0" expanded="false" />
-            <element signature="e#1352#1816#0" expanded="false" />
-            <element signature="e#1857#2023#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shop/templatetags/tag_ext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="58" selection-start="878" selection-end="885" vertical-scroll-proportion="0.43722942">
-          <folding>
-            <element signature="e#247#563#0" expanded="false" />
-            <element signature="e#665#705#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python26/Lib/site-packages/django/template/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="822" column="0" selection-start="29616" selection-end="29616" vertical-scroll-proportion="0.7034632">
           <folding />
         </state>
       </provider>
@@ -662,6 +563,88 @@
     <entry file="file://$PROJECT_DIR$/Shop/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="0" selection-start="1046" selection-end="1046" vertical-scroll-proportion="0.41125542">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Shop/search_mini_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="14" selection-start="471" selection-end="471" vertical-scroll-proportion="0.41337386">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PerfumeShop/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="953" selection-end="953" vertical-scroll-proportion="0.81408453">
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python26/Lib/site-packages/django/template/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1112" column="54" selection-start="40831" selection-end="40831" vertical-scroll-proportion="0.606469">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shop/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="41" selection-start="1924" selection-end="1924" vertical-scroll-proportion="0.3452381">
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="58" selection-start="666" selection-end="672" vertical-scroll-proportion="0.4623431">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shop/templatetags/tag_ext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#247#563#0" expanded="false" />
+            <element signature="e#852#1956#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Shop/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="40" selection-start="114" selection-end="114" vertical-scroll-proportion="-3.9230769">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Shop/product_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="373" selection-end="373" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Shop/render_product_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="67" selection-start="3575" selection-end="3575" vertical-scroll-proportion="-5.8846154">
+          <folding>
+            <element signature="n#with#0;n#!!top" expanded="false" />
+            <element signature="tag#script#0" expanded="false" />
+            <element signature="tag#li#0;tag#ol#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shop/templatetags/filter_ext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="28" selection-start="609" selection-end="609" vertical-scroll-proportion="0.22629969">
           <folding />
         </state>
       </provider>

@@ -19,8 +19,8 @@ def render_menu(current, is_display_banner=False):
     return { 'menus' : menus, 'paths' : paths, 'is_display_banner' : is_display_banner }
 
 @register.inclusion_tag('Shop/render_product_list.html')
-def render_product_list(product_list):
-    return { 'product_list' : product_list }
+def render_product_list(product_list, mode):
+    return { 'product_list' : product_list, 'mode' : mode }
 
 @register.simple_tag(name='generate_url', takes_context=True)
 def generate_url(context, property_name, property_value):
@@ -52,4 +52,9 @@ def generate_url(context, property_name, property_value):
 
     url_params[dict_properties.get(property_name)] = property_value
 
-    return '/%s/' % ('/'.join(str(param) for param in url_params))
+    url = '/%s/' % ('/'.join(str(param) for param in url_params))
+
+    if param is not None:
+        url += param
+
+    return url
