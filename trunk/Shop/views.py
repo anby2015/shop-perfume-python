@@ -2,6 +2,8 @@ from django.core.paginator import Paginator
 from django.db.models.query_utils import Q
 from django.shortcuts import  render_to_response
 from django.template.context import RequestContext
+from tagging.models import Tag, TaggedItem
+from Shop import models
 from Shop.models import Product, Category
 
 def index(request):
@@ -66,3 +68,27 @@ def product_detail(request, slug):
     viewmodel = {'current' : product}
 
     return render_to_response('Shop/product_detail.html', {'viewmodel' : viewmodel })
+
+def tags(request):
+    return render_to_response('Shop/tags.html')
+
+def with_tag(request, tag, pIndex=1, pSize=15, orderBy='name', sortOrder='desc', mode='grid'):
+    query_tag = Tag.objects.get(name=tag)
+
+    query = TaggedItem.objects.get_by_model(models.Product, query_tag).order_by(orderBy)
+    if sortOrder == 'desc':
+        query = query.reverse()
+
+    paginator = Paginator(query.all(), pSize)
+
+    display_info = {'pIndex' : pIndex,
+                    'pSize' : str(pSize),
+                    'orderBy' : orderBy,
+                    'sortOrder' : sortOrder,
+                    'mode': mode }
+
+    viewmodel = {'curPage': paginator.page(pIndex),
+                 'current' : None,
+                 'display_info': display_info }
+
+    return render_to_response("Shop/product_list.html", {'viewmodel': viewmodel}, context_instance = RequestContext(request))
