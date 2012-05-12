@@ -1,0 +1,21 @@
+{% load tag_cloud %}
+
+{% tag_cloud_for_model Shop.Product as tags with steps=6 min_count=1 distribution=log %}
+
+<div class="block block-tags">
+    <div class="block-title">
+        <strong><span>Popular Tags</span></strong>
+    </div>
+    <div class="block-content">
+        <ul class="tags-list">
+            {% for tag in tags %}
+                <li><a href="/tag/{{tag.name|slugify}}/"
+                       style="font-size:{{tag.font_size|get_font_size}}%">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+        <div class="actions">
+            <a href="/tags/">
+                View All Tags</a>
+        </div>
+    </div>
+</div>
