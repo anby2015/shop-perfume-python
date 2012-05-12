@@ -157,3 +157,5 @@ EMAIL_HOST = 'localhost'
 DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 LOGIN_REDIRECT_URL = '/'
 
+AUTH_PROFILE_MODULE = 'Shop.models.Customer'
+
