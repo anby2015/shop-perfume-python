@@ -22,6 +22,13 @@ def render_menu(current, is_display_banner=False):
 def render_product_list(product_list, mode):
     return { 'product_list' : product_list, 'mode' : mode }
 
+def get_request_from_context(context):
+    messages = [dict.get('messages') for dict in context.dicts if dict.has_key('messages')]
+    if not len(messages):
+        return None
+
+    return messages[0].request
+
 @register.simple_tag(name='generate_url', takes_context=True)
 def generate_url(context, property_name, property_value):
     dict_properties = {'pIndex' : 2, 'pSize' : 3, 'orderBy' : 4, 'sortOrder' : 5, 'mode' : 6}
@@ -37,11 +44,7 @@ def generate_url(context, property_name, property_value):
     if display_info is None:
        return None
 
-    messages = [dict.get('messages') for dict in context.dicts if dict.has_key('messages')]
-    if not len(messages):
-       return None
-
-    request = messages[0].request
+    request = get_request_from_context(context)
 
     url_params = [param for param in request.get_full_path().split('/') if len(param) > 0][:2]
     url_params.append(display_info['pIndex'])
@@ -58,3 +61,15 @@ def generate_url(context, property_name, property_value):
         url += param
 
     return url
+
+@register.inclusion_tag('cart/render_cart_block.html', takes_context=True)
+def render_cart_block(context):
+    session = get_request_from_context(context).session
+    cart = session.get('cart', None)
+    if cart is None:
+        return {'length' : 0}
+    return {'total_amount' : cart.get_total_amount(), 'length' : cart.get_length(), 'items' : cart.items}
+
+
+
+

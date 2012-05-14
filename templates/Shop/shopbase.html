@@ -7,15 +7,7 @@
                 {% block main %} {% endblock %}
             </div>
             <div class="col-left sidebar">
-                <div class="block block-cart">
-                    <div class="block-title">
-                        <strong><span>My Cart</span></strong>
-                    </div>
-                    <div class="block-content">
-                        <p class="empty">
-                            You have no items in your shopping cart.</p>
-                    </div>
-                </div>
+                {%  include 'cart/cart_block.html' %}
                 <div class="block block-banner">
                     <div class="block-content">
                         <a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/"
@@ -26,7 +18,6 @@
                     </div>
                 </div>
                 {% include 'Shop/block_tag.html' %}
-
                 <div class="block block-subscribe">
                     <div class="block-title">
                         <strong><span>Newsletter</span></strong>

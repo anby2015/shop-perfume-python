@@ -1,0 +1,38 @@
+{% load staticfiles filter_ext %}
+
+{% if length > 0 %}
+    <div class="summary">
+        <p class="amount">There are <a href="/cart/checkout/">{{ length }} items</a> in your cart.</p>
+        <p class="subtotal">
+            <span class="label">Cart Subtotal:</span> <span class="price">{{ total_amount }}</span>
+        </p>
+    </div>
+    <div class="actions">
+        <button type="button" title="Checkout" class="button" onclick="setLocation('/cart/checkout/')"><span><span>Checkout</span></span></button>
+    </div>
+    <p class="block-subtitle">Recently added item(s)</p>
+        <ol id="cart-sidebar" class="mini-products-list">
+            {% for index in length|get_range %}
+                {% with item=items|get_item:index %}
+                    <li class="item {{ items|get_first_last:item }} {{ index|get_odd_even }}">
+                        {% with product=item.product %}
+                            <a href="{{ product.get_absolute_url }}" title="{{ product.name }}" class="product-image"><img src="{% static product.image %}" width="50" height="50" alt="{{ product.name }}"></a>
+                            <div class="product-details">
+                                <a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/delete/id/3125/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9nYW1pbmctY29tcHV0ZXIuaHRtbD9vcHRpb25zPWNhcnQ,/" title="Remove This Item" onclick="return confirm('Are you sure you would like to remove this item from the shopping cart?');" class="btn-remove">Remove This Item</a>
+                                <a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/configure/id/3125/" title="Edit item" class="btn-edit">Edit item</a>
+                                <p class="product-name"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></p>
+                                <strong>{{ item.quantity }}</strong> x
+
+                                <span class="price">{{ product.price }}</span>
+
+
+                            </div>
+                        {% endwith %}
+                    </li>
+                {% endwith %}
+            {% endfor %}
+        </ol>
+    <script type="text/javascript">decorateList('cart-sidebar', 'none-recursive')</script>
+{% else %}
+    <p class="empty">You have no items in your shopping cart.</p>
+{% endif %}
