@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
 from Shop.models import Product, Cart
 
@@ -9,8 +9,8 @@ def cart_add(request, slug, product_id):
     cart = get_shopping_cart(request)
     cart.add_item(obj, quantity)
     update_shopping_cart(request, cart)
-    ctx = {'object': obj, 'cart': cart}
-    return render_to_response('cart/add_to_cart.html', ctx, context_instance=RequestContext(request))
+
+    return redirect('cart_shopping_cart')
 
 def lookup_object(queryset, object_id=None, slug=None, slug_field=None):
     if object_id is not None:
@@ -30,6 +30,19 @@ def update_shopping_cart(request, cart):
 
 def shopping_cart(request):
     cart = get_shopping_cart(request)
-    ctx = {'cart': cart}
+    ctx = {'items': cart.items, 'length' : cart.get_length() }
     return render_to_response('cart/shopping_cart.html', ctx, context_instance=RequestContext(request))
 
+def cart_remove(request, itemid, last_url):
+    cart = get_shopping_cart(request)
+    cart.remove_item(int(itemid))
+    update_shopping_cart(request, cart)
+
+    return redirect(last_url)
+
+def cart_config(request, itemid):
+    cart = get_shopping_cart(request)
+    viewmodel = {'current' : cart.get_item(int(itemid)).product}
+    ctx = {'viewmodel': viewmodel}
+
+    return render_to_response('Shop/product_detail.html', ctx, context_instance=RequestContext(request))

@@ -1,4 +1,5 @@
 from django import template
+from django.core.urlresolvers import resolve
 from Shop.menus import get_main_menu, get_menu_path
 from Shop.models import Category, Product
 
@@ -64,11 +65,26 @@ def generate_url(context, property_name, property_value):
 
 @register.inclusion_tag('cart/render_cart_block.html', takes_context=True)
 def render_cart_block(context):
-    session = get_request_from_context(context).session
+    request = get_request_from_context(context)
+    session = request.session
     cart = session.get('cart', None)
     if cart is None:
         return {'length' : 0}
-    return {'total_amount' : cart.get_total_amount(), 'length' : cart.get_length(), 'items' : cart.items}
+    url = get_url_name_from_request(request)
+
+    return {'total_amount' : cart.get_total_amount(), 'length' : cart.get_length(), 'items' : cart.items, 'url' : url}
+
+def get_url_name_from_request(request):
+    return resolve(request.get_full_path()).url_name
+
+@register.simple_tag(name='get_current_url', takes_context=True)
+def get_current_url(context):
+    request = get_request_from_context(context)
+
+    if request is None:
+        return ''
+
+    return get_url_name_from_request(request)
 
 
 
