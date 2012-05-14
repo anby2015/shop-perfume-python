@@ -28,7 +28,7 @@ def get_shopping_cart(request, cart_class=Cart):
 def update_shopping_cart(request, cart):
     request.session['cart'] = cart
 
-def shopping_cart(request, template_name='orders/shopping_cart.html'):
+def shopping_cart(request):
     cart = get_shopping_cart(request)
     ctx = {'cart': cart}
     return render_to_response(template_name, ctx, context_instance=RequestContext(request))

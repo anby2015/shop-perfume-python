@@ -84,6 +84,9 @@ class Item(object):
         self.product = product
         self.quantity = quantity
 
+    def get_amount(self):
+        return self.quantity * self.product.price
+
 class Cart(object):
     def __init__(self):
         self.items = []
@@ -95,8 +98,15 @@ class Cart(object):
     next_item_id = property(_get_next_item_id)
 
     def add_item(self, product, quantity=1):
-        item = Item(self.next_item_id, product, quantity)
-        self.items.append(item)
+        already_has = False
+        for item in self.items:
+            if item.product.id == product.id:
+                already_has = True
+                item.quantity += quantity
+
+        if not already_has:
+            item = Item(self.next_item_id, product, quantity)
+            self.items.append(item)
 
     def is_empty(self):
         return self.items == []
@@ -116,3 +126,13 @@ class Cart(object):
             item = self.items[current_index]
             current_index += 1
             yield item
+
+    def get_total_amount(self):
+        amounts = [item.get_amount() for item in self.items]
+        return sum(amounts)
+
+    def get_length(self):
+        return len(self.items)
+
+    def has_items(self):
+        return self.get_length() > 0

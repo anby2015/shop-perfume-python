@@ -9,8 +9,8 @@ from Shop.models import Product, Category
 
 def index(request):
     newestProducts = Product.objects.all().order_by('createdDate')[:10]
-
-    return render_to_response('Shop/index.html', {'products': newestProducts, 'is_display_banner' : True })
+    ctx = {'products': newestProducts, 'is_display_banner' : True }
+    return render_to_response('Shop/index.html', ctx, context_instance = RequestContext(request))
 
 def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='desc', mode='grid'):
     category = Category.objects.get(slug=slug)
@@ -35,7 +35,8 @@ def product_list(request, slug, pIndex=1, pSize=15, orderBy='name', sortOrder='d
                  'current' : category,
                  'display_info': display_info }
 
-    return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel}, context_instance = RequestContext(request) )
+    ctx = {'viewmodel': viewmodel}
+    return render_to_response('Shop/product_list.html', ctx, context_instance = RequestContext(request) )
 
 def search_result(request, pIndex=1, pSize=15, orderBy='name', sortOrder='desc', mode='grid'):
     query = request.GET['q']
@@ -61,14 +62,18 @@ def search_result(request, pIndex=1, pSize=15, orderBy='name', sortOrder='desc',
                  'current' : None,
                  'display_info': display_info }
 
-    return render_to_response('Shop/product_list.html', {'viewmodel': viewmodel}, context_instance = RequestContext(request) )
+    ctx = {'viewmodel': viewmodel}
+
+    return render_to_response('Shop/product_list.html', ctx, context_instance = RequestContext(request) )
 
 def product_detail(request, slug):
     product = Product.objects.get(slug=slug)
 
     viewmodel = {'current' : product}
 
-    return render_to_response('Shop/product_detail.html', {'viewmodel' : viewmodel })
+    ctx = {'viewmodel': viewmodel}
+
+    return render_to_response('Shop/product_detail.html', ctx, context_instance = RequestContext(request) )
 
 def tags(request):
     return render_to_response('Shop/tags.html')
@@ -92,5 +97,7 @@ def with_tag(request, tag, pIndex=1, pSize=15, orderBy='name', sortOrder='desc',
                  'current' : None,
                  'display_info': display_info }
 
-    return render_to_response("Shop/product_list.html", {'viewmodel': viewmodel}, context_instance = RequestContext(request))
+    ctx = {'viewmodel': viewmodel}
+
+    return render_to_response("Shop/product_list.html", ctx, context_instance = RequestContext(request))
 
