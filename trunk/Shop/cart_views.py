@@ -31,4 +31,5 @@ def update_shopping_cart(request, cart):
 def shopping_cart(request):
     cart = get_shopping_cart(request)
     ctx = {'cart': cart}
-    return render_to_response(template_name, ctx, context_instance=RequestContext(request))
+    return render_to_response('cart/shopping_cart.html', ctx, context_instance=RequestContext(request))
+
