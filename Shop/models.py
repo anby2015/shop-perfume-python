@@ -28,6 +28,8 @@ class Product(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category, related_name="products")
     createdDate = models.DateTimeField(default=datetime.datetime.now())
+#    True is male, otherwise is female
+#    gender = models.BooleanField(default=False)
     tags = TagField()
 
     def __unicode__(self):
@@ -75,3 +77,42 @@ class ProductInOrder(models.Model):
     total_price = models.DecimalField(max_digits=7, decimal_places=2)
     quantity = models.PositiveIntegerField()
     comments = models.TextField(blank=True)
+
+class Item(object):
+    def __init__(self, itemid, product, quantity=1):
+        self.itemid = itemid
+        self.product = product
+        self.quantity = quantity
+
+class Cart(object):
+    def __init__(self):
+        self.items = []
+        self.unique_item_id = 0
+
+    def _get_next_item_id(self):
+        self.unique_item_id += 1
+        return self.unique_item_id
+    next_item_id = property(_get_next_item_id)
+
+    def add_item(self, product, quantity=1):
+        item = Item(self.next_item_id, product, quantity)
+        self.items.append(item)
+
+    def is_empty(self):
+        return self.items == []
+
+    def empty(self):
+        self.items = list()
+
+    def remove_item(self, itemid):
+        self.items = filter(lambda x: x.itemid != itemid, self.items)
+
+    def __iter__(self):
+        return self.forward()
+
+    def forward(self):
+        current_index = 0
+        while current_index < len(self.items):
+            item = self.items[current_index]
+            current_index += 1
+            yield item

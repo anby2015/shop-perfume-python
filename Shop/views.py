@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
 from django.db.models.query_utils import Q
+from django.http import Http404
 from django.shortcuts import  render_to_response
 from django.template.context import RequestContext
 from tagging.models import Tag, TaggedItem
@@ -92,3 +93,4 @@ def with_tag(request, tag, pIndex=1, pSize=15, orderBy='name', sortOrder='desc',
                  'display_info': display_info }
 
     return render_to_response("Shop/product_list.html", {'viewmodel': viewmodel}, context_instance = RequestContext(request))
+
