@@ -13,23 +13,27 @@
                             <h2 class="product-name">
                                 <a title="{{ item.name }}" href="{{ item.get_absolute_url }}">{{ item.name }}</a>
                             </h2>
-                            {#                    <div class="gender">#}
-                            {#                        <img title="Male" alt="Male" src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/skin/frontend/em0008/default/images/i_gender-male.gif">#}
-                            {#                    </div>#}
+                            <div class="gender">
+                                {% if item.gender %}
+                                    <img title="Male" alt="Male" src="{% static "img/i_gender-male.gif" %}" />
+                                {% else %}
+                                    <img title="Female" alt="Female" src="{% static "img/i_gender-female.gif" %}" />
+                                {% endif %}
+                            </div>
                             <div class="price-box">
                                 <span id="product-price-{{ item.id }}" class="regular-price"><span class="price">{{ item.price }}</span></span>
                             </div>
-                            {#                    <div class="actions">#}
-                            {#                        <button onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/product/167/')"#}
-                            {#                                class="button btn-cart" title="Add to Cart" type="button">#}
-                            {#                            <span><span>Add to Cart</span></span></button>#}
-                            {#                    </div>#}
-                            {#                    <ul class="add-to-links">#}
-                            {#                        <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/167/">#}
-                            {#                            Add to Wishlist</a></li>#}
-                            {#                        <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/167/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">#}
-                            {#                            Add to Compare</a></li>#}
-                            {#                    </ul>#}
+                            <div class="actions">
+                                <button onclick="setLocation('/cart/add/{{ item.slug }}/{{ item.id }}/')"
+                                        class="button btn-cart" title="Add to Cart" type="button">
+                                    <span><span>Add to Cart</span></span></button>
+                            </div>
+{#                            <ul class="add-to-links">#}
+{#                                <li><a class="link-wishlist" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/wishlist/index/add/product/167/">#}
+{#                                    Add to Wishlist</a></li>#}
+{#                                <li><span class="separator">|</span> <a class="link-compare" href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/catalog/product_compare/add/product/167/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw,/">#}
+{#                                    Add to Compare</a></li>#}
+{#                            </ul>#}
                         </li>
                     {% endfor %}
                 {% endwith %}
