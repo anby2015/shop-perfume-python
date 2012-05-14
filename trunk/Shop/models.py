@@ -44,6 +44,9 @@ class Product(models.Model):
     def set_tags(self, tags):
         Tag.objects.update_tags(self, tags)
 
+    def get_image(self):
+        return '/static%s' % self.image
+
 class Customer(models.Model):
     user = models.ForeignKey(User)
     address = models.CharField(max_length=300)
@@ -136,3 +139,10 @@ class Cart(object):
 
     def has_items(self):
         return self.get_length() > 0
+
+    def get_item(self, itemid):
+        for item in self.items:
+            if item.itemid == itemid:
+                return item
+
+        return None

@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 
+{%  load filter_ext staticfiles tag_ext %}
+
 {% block mainContent %}
     <div class="main-container col1-layout">
     <div class="main">
     <div class="col-main">
-    <div class="cart">
+        {% if length > 0  %}
+            <div class="cart">
     <div class="page-title title-buttons">
         <h1>Shopping Cart</h1>
         <ul class="checkout-types">
-            <li>    <button type="button" title="Proceed to Checkout" class="button btn-proceed-checkout btn-checkout" onclick="window.location='http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/onepage/';"><span><span>Proceed to Checkout</span></span></button>
+            <li>    <button type="button" title="Proceed to Checkout" class="button btn-proceed-checkout btn-checkout"
+                            onclick="window.location='/checkout/onepage/';"><span>
+                <span>Proceed to Checkout</span></span></button>
             </li>
         </ul>
     </div>
@@ -22,85 +27,62 @@
                     <col width="1">
                     <col width="1">
                     <col width="1">
-
-                </colgroup><thead>
-            <tr class="first last">
-                <th rowspan="1">&nbsp;</th>
-                <th rowspan="1"><span class="nobr">Product Name</span></th>
-                <th rowspan="1"></th>
-                <th class="a-center" colspan="1"><span class="nobr">Unit Price</span></th>
-                <th rowspan="1" class="a-center">Qty</th>
-                <th class="a-center" colspan="1">Subtotal</th>
-                <th rowspan="1" class="a-center">&nbsp;</th>
-            </tr>
-            </thead>
+                </colgroup>
+                <thead>
+                    <tr class="first last">
+                        <th rowspan="1">&nbsp;</th>
+                        <th rowspan="1"><span class="nobr">Product Name</span></th>
+                        <th rowspan="1"></th>
+                        <th class="a-center" colspan="1"><span class="nobr">Unit Price</span></th>
+                        <th rowspan="1" class="a-center">Qty</th>
+                        <th class="a-center" colspan="1">Subtotal</th>
+                        <th rowspan="1" class="a-center">&nbsp;</th>
+                    </tr>
+                </thead>
                 <tfoot>
-                <tr class="first last">
-                    <td colspan="50" class="a-right last">
-                        <button type="button" title="Continue Shopping" class="button btn-continue" onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/')"><span><span>Continue Shopping</span></span></button>
-                        <button type="submit" title="Update Shopping Cart" class="button btn-update"><span><span>Update Shopping Cart</span></span></button>
-                    </td>
-                </tr>
+                    <tr class="first last">
+                        <td colspan="50" class="a-right last">
+                            <button type="button" title="Continue Shopping" class="button btn-continue" onclick="setLocation('/index/')"><span><span>Continue Shopping</span></span></button>
+                            <button type="submit" title="Update Shopping Cart" class="button btn-update"><span><span>Update Shopping Cart</span></span></button>
+                        </td>
+                    </tr>
                 </tfoot>
                 <tbody>
-                <tr class="first odd">
-                    <td><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/microsoft-wireless-optical-mouse-5000-162.html" title="Microsoft Wireless Optical Mouse 5000" class="product-image"><img src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/thumbnail/75x/9df78eab33525d08d6e5fb8d27136e95/m/i/microsoft-wireless-optical-mouse-5000.jpg" width="75" height="75" alt="Microsoft Wireless Optical Mouse 5000"></a></td>
-                    <td>
-                        <h2 class="product-name">
-                            <a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/microsoft-wireless-optical-mouse-5000-162.html">Microsoft Wireless Optical Mouse 5000</a>
-                        </h2>
-                    </td>
-                    <td class="a-center">
-                        <a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/configure/id/3132/" title="Edit item parameters">Edit</a>
-                    </td>
-                    <td class="a-right">
-                    <span class="cart-price">
-
-                            <span class="price">$59.99</span>
-        </span>
-
-
-                    </td>
-                    <td class="a-center">
-                        <input name="cart[3132][qty]" value="1" size="4" title="Qty" class="input-text qty" maxlength="12">
-                    </td>
-                    <td class="a-right">
-                    <span class="cart-price">
-
-                            <span class="price">$59.99</span>
-        </span>
-                    </td>
-                    <td class="a-center last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/delete/id/3132/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9jaGVja291dC9jYXJ0Lw,,/" title="Remove item" class="btn-remove btn-remove2">Remove item</a></td>
-                </tr>
-                <tr class="last even">
-                    <td><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/daisy.html" title="Daisy" class="product-image"><img src="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/media/catalog/product/cache/1/thumbnail/75x/9df78eab33525d08d6e5fb8d27136e95/d/a/daisy.jpg" width="75" height="75" alt="Daisy"></a></td>
-                    <td>
-                        <h2 class="product-name">
-                            <a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/daisy.html">Daisy</a>
-                        </h2>
-                    </td>
-                    <td class="a-center">
-                        <a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/configure/id/3133/" title="Edit item parameters">Edit</a>
-                    </td>
-                    <td class="a-right">
-                    <span class="cart-price">
-
-                            <span class="price">$85.00</span>
-        </span>
-
-
-                    </td>
-                    <td class="a-center">
-                        <input name="cart[3133][qty]" value="1" size="4" title="Qty" class="input-text qty" maxlength="12">
-                    </td>
-                    <td class="a-right">
-                    <span class="cart-price">
-
-                            <span class="price">$85.00</span>
-        </span>
-                    </td>
-                    <td class="a-center last"><a href="http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/delete/id/3133/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9jaGVja291dC9jYXJ0Lw,,/" title="Remove item" class="btn-remove btn-remove2">Remove item</a></td>
-                </tr>
+                {% for index in length|get_range %}
+                    {% with item=items|get_item:index %}
+                        <tr class="{{ items|get_first_last:item }}">
+                            <td>
+                                <a href="{{ item.product.get_absolute_url }}" title="{{ item.product.name }}" class="product-image">
+                                    <img src="{{ item.product.get_image }}" width="75" height="75" alt="{{ item.product.name }}">
+                                </a>
+                            </td>
+                            <td>
+                                <h2 class="product-name">
+                                    <a href="{{ item.product.get_absolute_url }}">{{  item.product.name }}</a>
+                                </h2>
+                            </td>
+                            <td class="a-center">
+                                <a href="/cart/configure/{{ item.itemid }}/" title="Edit item parameters">Edit</a>
+                            </td>
+                            <td class="a-right">
+                                <span class="cart-price">
+                                        <span class="price">{{ item.product.price }}</span>
+                                </span>
+                            </td>
+                            <td class="a-center">
+                                <input name="cart[{{ item.itemid }}][qty]" value="{{ item.quantity }}" size="4" title="Qty" class="input-text qty" maxlength="12">
+                            </td>
+                            <td class="a-right">
+                                <span class="cart-price">
+                                        <span class="price">{{ item.get_amount }}</span>
+                                </span>
+                            </td>
+                            <td class="a-center last">
+                                <a href="/cart/remove/{{ item.itemid }}/{% get_current_url %}/" title="Remove item" class="btn-remove btn-remove2">Remove item</a>
+                            </td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
                 </tbody>
             </table>
             <script type="text/javascript">decorateTable('shopping-cart-table')</script>
@@ -329,6 +311,15 @@
     </div>
     </div>
     </div>
+        {% else %}
+            <div class="page-title">
+                <h1>Shopping Cart is Empty</h1>
+            </div>
+            <div class="cart-empty">
+                <p>You have no items in your shopping cart.</p>
+                <p>Click <a href="/index/">here</a> to continue shopping.</p>
+            </div>
+        {% endif %}
     </div>
     </div>
     </div>

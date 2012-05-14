@@ -8,7 +8,7 @@
                     {% for item in items %}
                         <li class="item {{ items|get_first_last:item }}">
                             <a class="product-image" title="{{ item.name }}" href="{{ item.get_absolute_url }}">
-                                <img width="160" height="160" alt="{{ item.name }}" src="{% static "img/aqua-allegoria.jpg" %}" />
+                                <img width="160" height="160" alt="{{ item.name }}" src="{{ item.get_image }}" />
                             </a>
                             <h2 class="product-name">
                                 <a title="{{ item.name }}" href="{{ item.get_absolute_url }}">{{ item.name }}</a>
@@ -49,7 +49,7 @@
             {% with item=product_list|get_item:index %}
                 <li class="item {{ product_list|get_first_last:item }} {{ index|get_odd_even }}">
                     <a href="{{ item.get_absolute_url }}" title="Aqua Allegoria" class="product-image">
-                        <img src="{% static item.image %}" width="160" height="160" alt="{{ item.name }}" nosudispl="1">
+                        <img src="{{ item.get_image }}" width="160" height="160" alt="{{ item.name }}" nosudispl="1">
                         <div style="display: block; width: 20px; height: 75px">
                         </div>
                     </a>
@@ -65,7 +65,7 @@
 
                             </div>
 
-{#                            <p><button type="button" title="Add to Cart" class="button btn-cart" onclick="setLocation('http://www.emthemes.com/demo/magento-theme-perfume-store-em0008/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5lbXRoZW1lcy5jb20vZGVtby9tYWdlbnRvLXRoZW1lLXBlcmZ1bWUtc3RvcmUtZW0wMDA4L2luZGV4LnBocC9wZXJmdW1lLmh0bWw_bGltaXQ9NQ,,/product/167/')"><span><span>Add to Cart</span></span></button></p>#}
+                            <p><button type="button" title="Add to Cart" class="button btn-cart" onclick="setLocation('/cart/add/{{ item.slug }}/{{ item.id }}/')"><span><span>Add to Cart</span></span></button></p>
                             <div class="desc std">
                                 <p>{{ item.description }}﻿</p>                        <a href="{{ item.get_absolute_url }}" title="{{ item.name }}" class="link-learn">Learn More</a>
                             </div>
