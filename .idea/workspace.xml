@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="5b1768e0-a291-4d94-9dae-6635fe063f7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/cart/cart_block.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/cart/render_cart_block.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shop/static/img/bkg_main-col1-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shop/static/img/bkg_main-col1-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shop/static/img/bkg_tfoot.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shop/static/img/bkg_th.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shop/static/img/btn_checkout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shop/static/img/btn_trash.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Shop/static/img/i_cart.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/cart/shopping_cart.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PerfumeShop/urls.py" afterPath="$PROJECT_DIR$/PerfumeShop/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/cart_views.py" afterPath="$PROJECT_DIR$/Shop/cart_views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/models.py" afterPath="$PROJECT_DIR$/Shop/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/templatetags/tag_ext.py" afterPath="$PROJECT_DIR$/Shop/templatetags/tag_ext.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Shop/views.py" afterPath="$PROJECT_DIR$/Shop/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Shop/shopbase.html" afterPath="$PROJECT_DIR$/templates/Shop/shopbase.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/cart/render_cart_block.html" afterPath="$PROJECT_DIR$/templates/cart/render_cart_block.html" />
     </list>
     <ignored path="PerfumeShop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,67 +41,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="render_cart_block.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/cart/render_cart_block.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="56" selection-start="1673" selection-end="1673" vertical-scroll-proportion="-7.6923075">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PerfumeShop/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="1437" selection-end="1437" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="cart_views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shop/cart_views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="44" selection-start="948" selection-end="966" vertical-scroll-proportion="0.0">
+            <state line="33" column="48" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <element signature="e#215#576#0" expanded="false" />
                 <element signature="e#655#871#0" expanded="false" />
+                <element signature="e#926#982#0" expanded="false" />
                 <element signature="e#1029#1059#0" expanded="false" />
-                <element signature="e#1093#1243#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tag_ext.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Shop/templatetags/tag_ext.py">
+      <file leaf-file-name="shopping_cart.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/cart/shopping_cart.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="31" selection-start="2150" selection-end="2150" vertical-scroll-proportion="2.0974026">
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-                <element signature="e#247#563#0" expanded="false" />
-                <element signature="e#771#936#0" expanded="false" />
-                <element signature="e#1062#2042#0" expanded="false" />
-                <element signature="e#2155#2400#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python26/Lib/site-packages/django/template/base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="0" selection-start="4181" selection-end="4181" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loader_tags.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python26/Lib/site-packages/django/template/loader_tags.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="0" selection-start="5574" selection-end="5574" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="debug.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python26/Lib/site-packages/django/template/debug.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="0" selection-start="2717" selection-end="2717" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Shop/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="41" selection-start="3457" selection-end="3457" vertical-scroll-proportion="0.0">
+            <state line="3" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.2562814">
               <folding />
             </state>
           </provider>
@@ -113,7 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Shop/templatetags/tags_cloud.py" />
         <option value="$PROJECT_DIR$/Shop/templatetags/tag_cloud.py" />
         <option value="$PROJECT_DIR$/templates/Shop/block_tag.html" />
         <option value="$PROJECT_DIR$/templates/Shop/tags.html" />
@@ -121,14 +100,15 @@
         <option value="$USER_HOME$/.PyCharm20/system/python_stubs/-891257481/__builtin__.py" />
         <option value="$PROJECT_DIR$/PerfumeShop/settings.py" />
         <option value="$PROJECT_DIR$/templates/Shop/render_product_list.html" />
-        <option value="$PROJECT_DIR$/PerfumeShop/urls.py" />
-        <option value="$PROJECT_DIR$/Shop/cart_views.py" />
         <option value="$PROJECT_DIR$/templates/Shop/shopbase.html" />
         <option value="$PROJECT_DIR$/Shop/views.py" />
         <option value="$PROJECT_DIR$/templates/cart/cart_block.html" />
-        <option value="$PROJECT_DIR$/templates/cart/render_cart_block.html" />
         <option value="$PROJECT_DIR$/Shop/models.py" />
         <option value="$PROJECT_DIR$/Shop/templatetags/tag_ext.py" />
+        <option value="$PROJECT_DIR$/templates/cart/render_cart_block.html" />
+        <option value="$PROJECT_DIR$/PerfumeShop/urls.py" />
+        <option value="$PROJECT_DIR$/Shop/cart_views.py" />
+        <option value="$PROJECT_DIR$/templates/cart/shopping_cart.html" />
       </list>
     </option>
   </component>
@@ -201,38 +181,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PerfumeShop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Shop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -251,7 +199,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templatetags" />
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PerfumeShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Shop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PerfumeShop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PerfumeShop" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -262,11 +246,11 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="project.propSubversion" />
+    <property name="recentsLimit" value="5" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -278,8 +262,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Python26\Lib\site-packages\registration" />
       <recent name="C:\Users\thinhduong\PycharmProjects\PS\Shop\static\img" />
+      <recent name="C:\Python26\Lib\site-packages\registration" />
       <recent name="C:\Users\thinhduong\PycharmProjects\PerfumeShop\Shop\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -325,25 +309,6 @@
       <option name="MULTIPROCESS" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <module name="PerfumeShop" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -363,6 +328,25 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="PerfumeShop" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -525,7 +509,11 @@
       <created>1336958325154</created>
       <updated>1336958325154</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fix add_item in cart, render_cart_block">
+      <created>1336964725106</created>
+      <updated>1336964725106</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -552,13 +540,12 @@
     <frame x="62" y="0" width="1304" height="768" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14251208" sideWeight="0.55263156" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.7055921" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5674342" sideWeight="0.0" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20063694" sideWeight="0.21794872" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20531401" sideWeight="0.2944079" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20853463" sideWeight="0.7878289" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21217105" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.49761146" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2944079" sideWeight="0.4968153" order="2" side_tool="false" content_ui="tabs" />
@@ -567,6 +554,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -609,7 +597,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="add cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix add_item in cart, render_cart_block" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -627,6 +615,7 @@
     <MESSAGE value="add tagging function" />
     <MESSAGE value="add customer, order models" />
     <MESSAGE value="add cart" />
+    <MESSAGE value="fix add_item in cart, render_cart_block" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -643,30 +632,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/Shop/product_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="10" selection-start="458" selection-end="458" vertical-scroll-proportion="0.6076923" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PerfumeShop/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="59" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.8495298" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Shop/shopbase.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="0.32625994">
-          <folding>
-            <element signature="tag#div#0;tag#div#1;tag#div#0;tag#div#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Shop/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/cart/add_to_cart.html">
@@ -676,85 +644,27 @@
     </entry>
     <entry file="file://C:/Python26/Lib/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="0" selection-start="9119" selection-end="9119" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="193" column="0" selection-start="9119" selection-end="9119" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Shop/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="47" selection-start="3501" selection-end="3501" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="97" column="47" selection-start="3501" selection-end="3501" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/cart/cart_block.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="202" selection-end="202" vertical-scroll-proportion="0.24416517">
-          <folding />
-        </state>
+        <state line="8" column="0" selection-start="202" selection-end="202" vertical-scroll-proportion="0.24416517" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Shop/render_product_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="97" selection-start="3208" selection-end="3289" vertical-scroll-proportion="0.5862069">
-          <folding>
-            <element signature="n#with#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/cart/render_cart_block.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="60" selection-start="2418" selection-end="2422" vertical-scroll-proportion="0.62695926">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shop/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="41" selection-start="3457" selection-end="3457" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python26/Lib/site-packages/django/template/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="0" selection-start="4181" selection-end="4181" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python26/Lib/site-packages/django/template/loader_tags.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="0" selection-start="5574" selection-end="5574" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python26/Lib/site-packages/django/template/debug.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2717" selection-end="2717" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Shop/cart_views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="44" selection-start="948" selection-end="966" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#215#576#0" expanded="false" />
-            <element signature="e#655#871#0" expanded="false" />
-            <element signature="e#1029#1059#0" expanded="false" />
-            <element signature="e#1093#1243#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="49" column="97" selection-start="3208" selection-end="3289" vertical-scroll-proportion="0.5862069" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Shop/templatetags/tag_ext.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="31" selection-start="2150" selection-end="2150" vertical-scroll-proportion="2.0974026">
+        <state line="75" column="0" selection-start="2405" selection-end="2405" vertical-scroll-proportion="0.69982845">
           <folding>
             <element signature="e#0#27#0" expanded="true" />
             <element signature="e#247#563#0" expanded="false" />
@@ -762,6 +672,75 @@
             <element signature="e#1062#2042#0" expanded="false" />
             <element signature="e#2155#2400#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python26/Lib/site-packages/django/template/loader_tags.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="0" selection-start="5574" selection-end="5574" vertical-scroll-proportion="0.044386424">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python26/Lib/site-packages/django/template/debug.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="2717" selection-end="2717" vertical-scroll-proportion="3.062663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shop/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="41" selection-start="3457" selection-end="3457" vertical-scroll-proportion="1.2428198">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python26/Lib/site-packages/django/template/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="0" selection-start="4181" selection-end="4181" vertical-scroll-proportion="0.044386424">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PerfumeShop/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="1437" selection-end="1437" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cart/render_cart_block.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="56" selection-start="1673" selection-end="1673" vertical-scroll-proportion="-7.6923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Shop/cart_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="48" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#215#576#0" expanded="false" />
+            <element signature="e#655#871#0" expanded="false" />
+            <element signature="e#926#982#0" expanded="false" />
+            <element signature="e#1029#1059#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.8571428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cart/shopping_cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.2562814">
+          <folding />
         </state>
       </provider>
     </entry>
