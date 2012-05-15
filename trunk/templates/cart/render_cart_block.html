@@ -18,8 +18,8 @@
                         {% with product=item.product %}
                             <a href="{{ product.get_absolute_url }}" title="{{ product.name }}" class="product-image"><img src="{{ product.get_image }}" width="50" height="50" alt="{{ product.name }}"></a>
                             <div class="product-details">
-                                <a href="cart/remove/{{ item.itemid }}/{{ url }}/" title="Remove This Item" onclick="return confirm('Are you sure you would like to remove this item from the shopping cart?');" class="btn-remove">Remove This Item</a>
-                                <a href="/cart/configure/{{ item.itemid }}/" title="Edit item" class="btn-edit">Edit item</a>
+                                <a href="/cart/remove/{{ item.itemid }}/{{ url }}/" title="Remove This Item" onclick="return confirm('Are you sure you would like to remove this item from the shopping cart?');" class="btn-remove">Remove This Item</a>
+                                <a href="/cart/configure/{{ item.product.id }}/" title="Edit item" class="btn-edit">Edit item</a>
                                 <p class="product-name"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></p>
                                 <strong>{{ item.quantity }}</strong> x
 

@@ -1,7 +1,8 @@
 from django.http import Http404
 from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
-from Shop.models import Product, Cart
+from Shop.forms import ProductDetailForm
+from Shop.models import Product, Cart, Item
 
 def cart_add(request, slug, product_id):
     obj = lookup_object(Product.objects, product_id, slug, 'slug')
@@ -38,11 +39,29 @@ def cart_remove(request, itemid, last_url):
     cart.remove_item(int(itemid))
     update_shopping_cart(request, cart)
 
-    return redirect(last_url)
+    return redirect(last_url.replace('_','/'))
 
-def cart_config(request, itemid):
+def cart_config(request, product_id):
     cart = get_shopping_cart(request)
-    viewmodel = {'current' : cart.get_item(int(itemid)).product}
+    item = cart.get_item_by_product_id(int(product_id))
+
+    if item is None:
+        product = Product.objects.get(id=product_id)
+        cart.add_item(product, 1)
+        item = cart.get_item_by_product_id(int(product_id))
+
+    if request.method == 'POST':
+        form = ProductDetailForm(request.POST)
+        if form.is_valid():
+            item.quantity = int(form.cleaned_data['quantity'])
+            update_shopping_cart(request, cart)
+    else:
+        form = ProductDetailForm()
+
+    viewmodel = {'current' : item.product, 'form' : form}
+
     ctx = {'viewmodel': viewmodel}
 
     return render_to_response('Shop/product_detail.html', ctx, context_instance=RequestContext(request))
+
+

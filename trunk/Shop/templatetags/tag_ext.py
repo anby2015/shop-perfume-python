@@ -63,14 +63,20 @@ def generate_url(context, property_name, property_value):
 
     return url
 
+def get_cart_from_context(context):
+    request = get_request_from_context(context)
+    session = request.session
+    return session.get('cart', None)
+
 @register.inclusion_tag('cart/render_cart_block.html', takes_context=True)
 def render_cart_block(context):
     request = get_request_from_context(context)
-    session = request.session
-    cart = session.get('cart', None)
+    cart = get_cart_from_context(context)
+
     if cart is None:
         return {'length' : 0}
-    url = get_url_name_from_request(request)
+
+    url = request.get_full_path().replace('/', '_')
 
     return {'total_amount' : cart.get_total_amount(), 'length' : cart.get_length(), 'items' : cart.items, 'url' : url}
 
@@ -84,7 +90,15 @@ def get_current_url(context):
     if request is None:
         return ''
 
-    return get_url_name_from_request(request)
+    return request.get_full_path().replace('/', '_')
+
+@register.simple_tag(name='get_quantity', takes_context=True)
+def get_quantity(context, product_id):
+    cart = get_cart_from_context(context)
+    item = cart.get_item_by_product_id(product_id)
+    if item is None:
+        return 0
+    return item.quantity
 
 
 
