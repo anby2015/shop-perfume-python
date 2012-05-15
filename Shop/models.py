@@ -146,3 +146,10 @@ class Cart(object):
                 return item
 
         return None
+
+    def get_item_by_product_id(self, product_id):
+        for item in self.items:
+            if item.product.id == product_id:
+                return item
+
+        return None
